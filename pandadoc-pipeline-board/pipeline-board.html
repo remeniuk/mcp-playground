@@ -1,0 +1,2091 @@
+<title>PandaDoc Pipeline Board</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Design tokens: color, spacing and type scale. */
+:root{
+--pd-spacing-s0:0px;
+--pd-spacing-s0_25:1px;
+--pd-spacing-s0_5:2px;
+--pd-spacing-s1:4px;
+--pd-spacing-s1_5:6px;
+--pd-spacing-s2:8px;
+--pd-spacing-s3:12px;
+--pd-spacing-s4:16px;
+--pd-spacing-s5:20px;
+--pd-spacing-s6:24px;
+--pd-spacing-s7:28px;
+--pd-spacing-s8:32px;
+--pd-spacing-s9:36px;
+--pd-spacing-s10:40px;
+--pd-spacing-s11:44px;
+--pd-spacing-s12:48px;
+--pd-spacing-s13:52px;
+--pd-spacing-s14:56px;
+--pd-spacing-s15:60px;
+--pd-spacing-s16:64px;
+--pd-spacing-s17:68px;
+--pd-spacing-s18:72px;
+--pd-spacing-s19:76px;
+--pd-spacing-s20:80px;
+--pd-spacing-s21:84px;
+--pd-spacing-s22:88px;
+--pd-spacing-s23:92px;
+--pd-spacing-s24:96px;
+--pd-spacing-s25:100px;
+--pd-borderRadius-o:0px;
+--pd-borderRadius-xs:2px;
+--pd-borderRadius-s:4px;
+--pd-borderRadius-m:8px;
+--pd-borderRadius-l:12px;
+--pd-borderRadius-xl:16px;
+--pd-color-basic-white:oklch(1 0 0 / 1);
+--pd-color-primary-lighter:oklch(0.9636 0.0089 179.6 / 1);
+--pd-color-primary-light:oklch(0.948 0.0138 174.16 / 1);
+--pd-color-primary-main:oklch(0.5535 0.1001 167.8 / 1);
+--pd-color-primary-dark:oklch(0.4713 0.0837 167.95 / 1);
+--pd-color-primary-darker:oklch(0.3886 0.067 168.47 / 1);
+--pd-color-secondary-lighter:oklch(0.5658 0 0 / 1);
+--pd-color-secondary-light:oklch(0.3979 0 0 / 1);
+--pd-color-secondary-main:oklch(0.3052 0 0 / 1);
+--pd-color-secondary-dark:oklch(0.209 0 0 / 1);
+--pd-color-tertiary-light:oklch(0.9672 0 0 / 1);
+--pd-color-tertiary-main:oklch(0.9521 0 0 / 1);
+--pd-color-tertiary-dark:oklch(0.9189 0 0 / 1);
+--pd-color-tertiary-darker:oklch(0.7476 0 0 / 1);
+--pd-color-accent-lighter:oklch(0.9619 0.0125 255.51 / 1);
+--pd-color-accent-light:oklch(0.9433 0.0172 256.28 / 1);
+--pd-color-accent-main:oklch(0.5247 0.1634 257.61 / 1);
+--pd-color-accent-dark:oklch(0.4468 0.1365 257.51 / 1);
+--pd-color-accent-darker:oklch(0.3689 0.108 257.31 / 1);
+--pd-color-danger-lighter:oklch(0.9673 0.013 23.19 / 1);
+--pd-color-danger-light:oklch(0.9511 0.0197 21.36 / 1);
+--pd-color-danger-main:oklch(0.6296 0.1872 26.27 / 1);
+--pd-color-danger-dark:oklch(0.534 0.1562 25.8 / 1);
+--pd-color-danger-darker:oklch(0.4369 0.1239 26.1 / 1);
+--pd-color-warning-lighter:oklch(0.9868 0.0118 79.79 / 1);
+--pd-color-warning-light:oklch(0.9786 0.0164 79.35 / 1);
+--pd-color-warning-main:oklch(0.841 0.1327 77.21 / 1);
+--pd-color-warning-dark:oklch(0.713 0.1113 77.43 / 1);
+--pd-color-warning-darker:oklch(0.5789 0.0889 77.79 / 1);
+--pd-color-premium-lighter:oklch(0.967 0.0123 91.52 / 1);
+--pd-color-premium-light:oklch(0.9229 0.028 88.76 / 1);
+--pd-color-premium-main:oklch(0.5736 0.0914 87.91 / 1);
+--pd-color-premium-dark:oklch(0.467 0.0947 88.04 / 1);
+--pd-color-premium-darker:oklch(0.4028 0.0823 87.84 / 1);
+--pd-color-smart-lighter:oklch(0.9626 0.0134 295.32 / 1);
+--pd-color-smart-light:oklch(0.9449 0.0188 289.32 / 1);
+--pd-color-smart-main:oklch(0.5282 0.1838 284.42 / 1);
+--pd-color-smart-dark:oklch(0.451 0.1545 284.73 / 1);
+--pd-color-smart-darker:oklch(0.3713 0.1208 285.03 / 1);
+--pd-color-background-lighter:oklch(0.9574 0.0059 59.65 / 1);
+--pd-color-background-light:oklch(0.9282 0.0094 62.58 / 1);
+--pd-color-opacity-active:oklch(0.5658 0 0 / 0.16);
+--pd-color-opacity-activeInverse:oklch(1 0 0 / 0.16);
+--pd-color-opacity-hover:oklch(0.5658 0 0 / 0.08);
+--pd-color-opacity-hoverInverse:oklch(1 0 0 / 0.08);
+--pd-color-opacity-overlay:oklch(0.3052 0 0 / 0.32);
+--pd-color-additional-1:oklch(0.7603 0.16 51.77 / 1);
+--pd-color-additional-2:oklch(0.5727 0.2291 262.13 / 1);
+--pd-color-additional-3:oklch(0.5392 0.172 321.47 / 1);
+--pd-color-additional-4:oklch(0.7158 0.1363 227.2 / 1);
+--pd-color-additional-5:oklch(0.4482 0.1434 26.84 / 1);
+--pd-color-additional-6:oklch(0.6296 0.1872 26.27 / 1);
+--pd-color-additional-7:oklch(0.6123 0.1458 152.69 / 1);
+--pd-color-additional-8:oklch(0.5431 0.142679 152.0614 / 1);
+--pd-color-additional-9:oklch(0.7092 0.009 271.29 / 1);
+--pd-color-additional-10:oklch(0.6273 0.1992 27.61 / 1);
+--pd-color-additional-11:oklch(0.7135 0.1926 46.74 / 1);
+--pd-color-additional-12:oklch(0.7539 0.2324 143.86 / 1);
+--pd-color-additional-13:oklch(0.6608 0.1346 237.18 / 1);
+--pd-color-additional-14:oklch(0.5491 0.163 34.86 / 1);
+--pd-color-additional-15:oklch(0.7355 0.1242 188.81 / 1);
+--pd-color-additional-16:oklch(0.5397 0.176 8.92 / 1);
+--pd-color-additional-17:oklch(0.5713 0.1938 264.8 / 1);
+--pd-color-additional-18:oklch(0.7387 0.1456 88.41 / 1);
+--pd-color-additional-19:oklch(0.6377 0.1455 119.29 / 1);
+--pd-color-additional-20:oklch(0.7304 0.1517 17.06 / 1);
+--pd-color-additional-21:oklch(0.661 0.2445 337.14 / 1);
+--pd-color-additional-22:oklch(0.6592 0.1362 155.56 / 1);
+--pd-color-additional-23:oklch(0.7384 0.148 66.28 / 1);
+--pd-color-additional-24:oklch(0.6998 0.1845 299.27 / 1);
+--pd-color-additional-25:oklch(0.523 0.2215 331.19 / 1);
+--pd-color-additional-26:oklch(0.6608 0.1572 133.19 / 1);
+--pd-color-additional-27:oklch(0.6235 0.2384 16.79 / 1);
+--pd-color-additional-28:oklch(0.6535 0.1498 56.41 / 1);
+--pd-color-additional-29:oklch(0.5414 0.2411 298.58 / 1);
+--pd-color-additional-30:oklch(0.4619 0.2086 309.55 / 1);
+--pd-color-additional-31:oklch(0.4025 0.203 286.49 / 1);
+--pd-color-additional-32:oklch(0.6604 0.1535 155.52 / 1);
+--pd-color-additional-33:oklch(0.4944 0.1883 31.82 / 1);
+--pd-color-additional-34:oklch(0.5623 0.1105 236.07 / 1);
+--pd-color-additional-35:oklch(0.7951 0.1636 81.12 / 1);
+--pd-color-additional-36:oklch(0.6902 0.1971 27.67 / 1);
+--pd-color-additional-37:oklch(0.4934 0.0755 16.74 / 1);
+--pd-color-additional-38:oklch(0.7003 0.0804 157.51 / 1);
+--pd-color-additional-39:oklch(0.585 0.0336 256.07 / 1);
+--pd-color-additional-40:oklch(0.89 0.1643 95.52 / 1);
+--pd-color-additional-41:oklch(0.6037 0.1624 46.9 / 1);
+--pd-color-additional-42:oklch(0.5351 0.1477 295.75 / 1);
+--pd-color-additional-43:oklch(0.5693 0.1011 107.15 / 1);
+--pd-color-additional-44:oklch(0.5716 0.0842 221.33 / 1);
+--pd-color-additional-45:oklch(0.5801 0.1937 12.48 / 1);
+--pd-color-additional-46:oklch(0.5839 0.1927 330.22 / 1);
+--pd-color-additional-47:oklch(0.5476 0.1305 153.41 / 1);
+--pd-color-additional-48:oklch(0.5792 0.071 19.45 / 1);
+--pd-color-sequential-0:oklch(0.6037 0.1624 46.9 / 1);
+--pd-color-sequential-1:oklch(0.5351 0.1477 295.75 / 1);
+--pd-color-sequential-2:oklch(0.5693 0.1011 107.15 / 1);
+--pd-color-sequential-3:oklch(0.5716 0.0842 221.33 / 1);
+--pd-color-sequential-4:oklch(0.5801 0.1937 12.48 / 1);
+--pd-color-sequential-5:oklch(0.5839 0.1927 330.22 / 1);
+--pd-color-sequential-6:oklch(0.5476 0.1305 153.41 / 1);
+--pd-color-sequential-7:oklch(0.5792 0.071 19.45 / 1);
+--pd-fontWeight-regular:400;
+--pd-fontWeight-semibold:600;
+--pd-fontWeight-bold:700;
+--pd-fontSize-s1:12px;
+--pd-fontSize-s2:13px;
+--pd-fontSize-s3:14px;
+--pd-fontSize-s4:16px;
+--pd-fontSize-s5:18px;
+--pd-fontSize-s6:24px;
+--pd-fontSize-s7:32px;
+--pd-lineHeight-h1:15px;
+--pd-lineHeight-h2:16px;
+--pd-lineHeight-h3:17px;
+--pd-lineHeight-h4:22px;
+--pd-lineHeight-h5:24px;
+--pd-lineHeight-h6:29px;
+--pd-lineHeight-h7:39px;
+}
+
+/* Layout: one column. Summary strip on top, a "Needs you" list for the next action, then the pipeline lanes. */
+/* Colors and type use the tokens above. */
+:root{
+  --font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  --bg:var(--pd-color-basic-white);--fg:var(--pd-color-secondary-dark);--mute:var(--pd-color-secondary-lighter);
+  --line:var(--pd-color-tertiary-dark);--card:var(--pd-color-tertiary-light);
+  --accent:var(--pd-color-primary-main);--accent-fg:var(--pd-color-basic-white);--accent-hover:var(--pd-color-primary-dark);
+  --ok:var(--pd-color-primary-main);--warn:var(--pd-color-warning-dark);--bad:var(--pd-color-danger-dark);
+  --smart:var(--pd-color-smart-main);--focus:var(--pd-color-accent-main);--blue:var(--pd-color-accent-main);
+  --shadow:0 8px 24px rgba(0,0,0,.14);--scrim:rgba(20,24,22,.42);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#222624;--fg:#f0f3f1;--mute:#abb5af;--line:#454d48;--card:#2d332f;--accent:#57c69d;--accent-fg:#13261e;--accent-hover:#7ad8b5;
+  --ok:#57c69d;--warn:#ecc482;--bad:#ffaaa0;--smart:#b8a3f5;--focus:#8cb9ff;--blue:#8cb9ff;--shadow:0 8px 24px rgba(0,0,0,.5);--scrim:rgba(0,0,0,.6);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#222624;--fg:#f0f3f1;--mute:#abb5af;--line:#454d48;--card:#2d332f;--accent:#57c69d;--accent-fg:#13261e;--accent-hover:#7ad8b5;
+  --ok:#57c69d;--warn:#ecc482;--bad:#ffaaa0;--smart:#b8a3f5;--focus:#8cb9ff;--blue:#8cb9ff;--shadow:0 8px 24px rgba(0,0,0,.5);--scrim:rgba(0,0,0,.6);color-scheme:dark}
+
+*,*::before,*::after{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--font);font-size:14px;line-height:20px;font-synthesis:none;-webkit-font-smoothing:antialiased;
+  padding-block:0 96px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.app{max-width:1280px;margin:0 auto;display:flex;flex-direction:column;gap:20px;min-width:0}
+h1,h2,h3{margin:0;font-weight:600;text-wrap:balance}
+h1{font-size:18px;line-height:26px;letter-spacing:-.2px}
+h2{font-size:16px;line-height:24px}
+h3{font-size:14px;line-height:20px}
+p{margin:0}
+[hidden]{display:none!important}
+#banner:empty,#answer:empty{display:none}
+.sub{font-size:12px;line-height:18px;color:var(--mute)}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.grow{flex:1}
+
+/* controls */
+button,input,textarea,select{font:inherit;color:var(--fg)}
+button{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:32px;padding:5px 12px;border-radius:4px;border:1px solid var(--line);background:var(--bg);font-weight:600;cursor:pointer;transition:background-color .15s,border-color .15s}
+button:hover:not(:disabled){background:var(--card);border-color:var(--pd-color-tertiary-darker)}
+button:disabled{opacity:.5;cursor:not-allowed}
+button.primary{min-height:40px;padding:9px 16px;background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+button.primary:hover:not(:disabled){background:var(--accent-hover);border-color:var(--accent-hover)}
+button.text-button{border-color:transparent;background:transparent;color:var(--mute)}
+button.text-button:hover:not(:disabled){background:var(--card);color:var(--fg)}
+:is(button,a,input,select,textarea,summary):focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+input[type=text],input[type=search],input[type=number],textarea{border:1px solid var(--line);border-radius:4px;background:var(--bg);padding:8px 12px;min-width:0}
+input::placeholder,textarea::placeholder{color:var(--mute)}
+textarea{width:100%;resize:vertical}
+input[type=checkbox]{width:16px;height:16px;accent-color:var(--accent);flex:none;margin:0}
+.pd-icon{width:16px;height:16px;fill:currentColor;flex:none}
+.plain-btn,.card-main,.row-main{align-items:flex-start;border:0;background:none;padding:0;min-height:0;text-align:left;font-weight:400;display:flex;width:100%;justify-content:flex-start}
+.card-main:hover:not(:disabled),.row-main:hover:not(:disabled){background:none}
+.pd-button-link{display:inline-flex;align-items:center;gap:8px;min-height:32px;padding:5px 12px;border:1px solid var(--line);border-radius:4px;font-weight:600;color:var(--fg);text-decoration:none}
+.pd-button-link:hover{background:var(--card)}
+.inline{display:inline-flex;align-items:center;gap:8px;font-size:13px}
+
+/* header: sticky command bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:15;display:flex;align-items:center;gap:12px 16px;flex-wrap:wrap;padding:12px 0;background:var(--bg);border-bottom:1px solid var(--line)}
+.brand{color:var(--fg);flex:none}
+.brand svg{display:block;width:100px;height:26px}
+.titles{display:flex;flex-direction:column;min-width:0}
+.top-tools{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.top-tools #search{width:160px;min-height:32px;padding:4px 12px}
+.mode{gap:8px}
+.mode::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--smart)}
+.mode[data-mode=live]::before{background:var(--ok)}
+kbd{font:inherit;font-size:11px;line-height:16px;padding:0 5px;border:1px solid var(--line);border-radius:4px;color:var(--mute);background:var(--card);white-space:nowrap}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:6px;padding:2px;gap:2px;background:var(--card)}
+.seg button{min-height:28px;padding:2px 12px;border:0;background:transparent;color:var(--mute);border-radius:4px}
+.seg button:hover:not(:disabled){background:transparent;color:var(--fg)}
+.seg button[aria-pressed=true]{background:var(--bg);color:var(--fg);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.seg.sm button{min-height:24px;padding:0 10px;font-size:12px}
+
+.banner{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-size:13px;background:color-mix(in srgb,var(--warn) 10%,var(--bg))}
+
+/* Ask Claude */
+.ask{display:flex;flex-direction:column;gap:12px;padding:12px 16px;border:1px solid var(--line);border-radius:8px;background:color-mix(in srgb,var(--smart) 5%,var(--bg))}
+.ask-form{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.ask-form input{flex:1 1 280px;min-height:40px}
+.ai-mark{display:inline-flex;align-items:center;gap:6px;color:var(--smart);font-weight:600}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{min-height:28px;padding:3px 10px;font-size:12px;font-weight:400;color:var(--mute)}
+.chip.doc{color:var(--fg);font-weight:600}
+.answer{border:1px solid var(--line);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:12px;background:color-mix(in srgb,var(--smart) 5%,var(--bg))}
+.answer.err-box{flex-direction:row;justify-content:space-between;align-items:center;background:color-mix(in srgb,var(--bad) 8%,var(--bg))}
+.ans-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.think{color:var(--smart);font-weight:600}
+.lead{font-size:14px;line-height:22px;max-width:75ch}
+.brief{margin:0;padding:0;list-style:none;display:flex;flex-direction:column}
+.brief li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--line);flex-wrap:wrap}
+.brief li>div:first-child{flex:1 1 280px;min-width:0}
+.brief p{color:var(--mute)}
+.brief em{color:var(--fg);font-style:normal}
+
+/* KPI strip: tiles are shortcuts into a filtered view */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(176px,1fr));border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.kpi{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:2px;padding:14px 18px;min-width:0;border:0;border-left:1px solid var(--line);border-radius:0;background:none;text-align:left;font-weight:400;min-height:0}
+.kpi:first-child{border-left:0}
+button.kpi:hover:not(:disabled){background:var(--card)}
+.k-label{font-size:12px;line-height:18px;color:var(--mute)}
+.kpi strong{font-size:20px;line-height:28px;font-weight:600;font-variant-numeric:tabular-nums}
+.k-sub{font-size:12px;line-height:18px;color:var(--mute)}
+.kpi.warn strong{color:var(--warn)}
+.kpi.good strong{color:var(--ok)}
+@media (max-width:640px){.kpi{border-left:0;border-top:1px solid var(--line)}.kpi:first-child{border-top:0}}
+
+/* section heads */
+.sec-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+.sec-tools{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.count{display:inline-block;min-width:22px;padding:0 6px;border-radius:11px;background:var(--card);font-size:12px;line-height:22px;font-weight:600;text-align:center;color:var(--mute);font-variant-numeric:tabular-nums}
+.rules summary{cursor:pointer;color:var(--mute);font-size:13px;list-style:none;padding:4px 8px;border-radius:4px}
+.rules summary:hover{background:var(--card);color:var(--fg)}
+.rules{position:relative}
+.rule-grid{position:absolute;right:0;top:100%;z-index:5;display:flex;flex-direction:column;gap:8px;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);box-shadow:var(--shadow);width:max-content;max-width:90vw}
+.rule-grid label{display:flex;gap:8px;align-items:center;font-size:13px}
+.rule-grid input{width:64px;padding:4px 8px}
+
+/* Focus queue */
+.grp{margin-bottom:20px}
+.grp-head{display:flex;align-items:center;gap:8px 12px;flex-wrap:wrap;padding:8px 0}
+.grp-head .sub{min-width:0}
+.panel{border:1px solid var(--line);border-radius:8px;padding:16px}
+.clear{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.needs-list{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.row{position:relative;display:flex;align-items:center;gap:12px;padding:10px 16px 10px 14px;border-top:1px solid var(--line);flex-wrap:wrap;background:var(--bg)}
+.row:first-child{border-top:0}
+.row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:transparent}
+.row.t-bad::before{background:var(--bad)}.row.t-warn::before{background:var(--warn)}.row.t-mute::before{background:var(--pd-color-tertiary-darker)}
+.row:hover,.row.cur{background:var(--card)}
+.row.cur{outline:2px solid var(--focus);outline-offset:-2px}
+.row.sel{background:color-mix(in srgb,var(--accent) 6%,var(--bg))}
+.row.hi{box-shadow:inset 0 0 0 2px var(--smart)}
+.row.start{background:color-mix(in srgb,var(--accent) 5%,var(--bg))}
+.row-main{flex:1 1 240px;min-width:0;flex-direction:column;gap:0}
+.r-name{overflow-wrap:anywhere}
+.r-name strong{font-weight:600}
+.dim{color:var(--mute)}
+.val{font-variant-numeric:tabular-nums;font-weight:600;min-width:72px;text-align:right}
+.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.row .snz{opacity:0}
+.row:hover .snz,.row.cur .snz,.row .snz:focus-visible{opacity:1}
+.more{margin:4px 0 8px}
+.needs-list .more{margin:0;border-radius:0;justify-content:flex-start;border-top:1px solid var(--line);padding:8px 16px}
+.quiet .needs-list{margin-top:8px}
+.snz-toggle{margin-top:4px}
+.empty{color:var(--mute);padding:12px 0}
+.empty.small{padding:8px 0;font-size:12px}
+.pill{display:inline-block;border-radius:4px;padding:2px 8px;font-size:12px;line-height:18px;font-weight:400;white-space:nowrap;background:var(--card);color:var(--mute)}
+.pill.ok{color:var(--ok);background:color-mix(in srgb,var(--ok) 12%,var(--bg))}
+.pill.warn{color:var(--warn);background:color-mix(in srgb,var(--warn) 12%,var(--bg))}
+.pill.bad{color:var(--bad);background:color-mix(in srgb,var(--bad) 10%,var(--bg))}
+.tag{display:inline-block;font-size:11px;line-height:16px;padding:0 6px;border:1px solid var(--line);border-radius:4px;color:var(--mute)}
+.tag.start{border-color:var(--accent);color:var(--ok);font-weight:600}
+.age{display:inline-block;min-width:52px;text-align:center;border-radius:10px;padding:0 8px;font-size:12px;line-height:20px;font-variant-numeric:tabular-nums;background:var(--card);color:var(--mute)}
+.age.warm{color:var(--warn);background:color-mix(in srgb,var(--warn) 14%,var(--bg))}
+.age.hot{color:var(--bad);background:color-mix(in srgb,var(--bad) 12%,var(--bg));font-weight:600}
+.prog{display:inline-flex;align-items:center;gap:3px;vertical-align:middle}
+.prog i{width:6px;height:6px;border-radius:50%;border:1px solid var(--mute)}
+.prog i.on{background:var(--ok);border-color:var(--ok)}
+.prog span{margin-left:3px;font-size:11px}
+.sk{height:48px;border-radius:8px;margin-bottom:8px;background:linear-gradient(90deg,var(--card),color-mix(in srgb,var(--card) 50%,var(--bg)),var(--card));background-size:200% 100%}
+@media (prefers-reduced-motion:no-preference){.sk{animation:sk 1.2s linear infinite}@keyframes sk{to{background-position:-200% 0}}}
+
+/* Lanes */
+.lane-scroll{overflow-x:auto;padding-bottom:8px}
+.lane-grid{display:grid;gap:12px;min-width:min-content}
+.lane{display:flex;flex-direction:column;gap:4px;min-width:0;background:var(--card);border-radius:8px;padding:12px}
+.lane header{display:flex;align-items:center;gap:8px}
+.lane header h3{flex:1;min-width:0}
+.lane-val{font-size:12px;color:var(--mute);font-variant-numeric:tabular-nums}
+.hint{font-size:12px;color:var(--mute);margin-bottom:8px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--pd-color-tertiary-darker)}
+.dot.approval{background:var(--warn)}.dot.sent{background:var(--blue)}.dot.viewed{background:var(--ok)}
+.dot.signed{background:var(--accent)}.dot.lost{background:var(--bad)}
+.cards{display:flex;flex-direction:column;gap:8px}
+.card{position:relative;display:flex;gap:0;align-items:flex-start;padding:12px 12px 12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--bg);overflow:hidden}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px}
+.card.t-bad::before{background:var(--bad)}.card.t-warn::before{background:var(--warn)}.card.t-mute::before{background:var(--pd-color-tertiary-darker)}
+.card.cur{outline:2px solid var(--focus);outline-offset:1px}
+.card input[type=checkbox]{margin-top:2px}
+.card:hover{border-color:var(--pd-color-tertiary-darker)}
+.card.sel{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 5%,var(--bg))}
+.card.hi{box-shadow:0 0 0 2px var(--smart)}
+.card.snz{opacity:.55}
+.card-main{flex-direction:column;gap:6px;min-width:0}
+.c-name{font-weight:600;overflow-wrap:anywhere}
+.c-title{color:var(--mute);font-size:13px;line-height:18px;overflow-wrap:anywhere}
+.c-meta{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%}
+.c-meta .val{min-width:0;text-align:left}
+.c-tags{display:flex;gap:4px;flex-wrap:wrap}
+.c-tags:empty{display:none}
+.lane.slim{justify-content:flex-start}
+.lane.slim .more{align-self:flex-start;margin:4px 0 0;white-space:nowrap;padding-left:0}
+.lane.slim .slim-val{font-weight:600;font-variant-numeric:tabular-nums;margin-bottom:4px}
+.mini{min-height:20px;padding:0 6px;font-size:12px;display:inline-flex}
+.chip.tog{color:var(--fg);font-weight:400}
+.chip.tog[aria-pressed=true]{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,var(--bg));font-weight:600}
+.chip .pd-icon{width:12px;height:12px}
+.pick{opacity:0}
+.card .pick{position:absolute;top:12px;right:12px;z-index:1}
+.card .c-name{padding-right:22px}
+.card:hover .age,.card.cur .age{opacity:1}
+.row:hover .pick,.card:hover .pick,.pick:checked,.pick:focus-visible,.has-sel .pick,.row.cur .pick,.card.cur .pick{opacity:1}
+@media (hover:none){.pick{opacity:1}}
+.nba{background:color-mix(in srgb,var(--accent) 5%,var(--bg))}
+.nba.t-bad{background:color-mix(in srgb,var(--bad) 6%,var(--bg))}
+.nba.t-warn{background:color-mix(in srgb,var(--warn) 7%,var(--bg))}
+.toast-wrap{position:fixed;z-index:40;left:max(16px,env(safe-area-inset-left,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));pointer-events:none}
+.has-sel .toast-wrap{bottom:calc(max(16px,env(safe-area-inset-bottom,0px)) + 64px)}
+.toast{pointer-events:auto;display:flex;gap:16px;align-items:center;padding:8px 8px 8px 16px;border-radius:8px;background:var(--fg);color:var(--bg);box-shadow:var(--shadow)}
+.toast .text-button{color:var(--bg);text-decoration:underline}
+.toast .text-button:hover:not(:disabled){background:transparent;color:var(--bg)}
+
+/* bulk bar */
+.bulk{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;justify-content:center;padding:0 max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));pointer-events:none}
+.bulk-inner{pointer-events:auto;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;width:100%;max-width:820px;padding:12px 16px;border:1px solid var(--line);border-radius:8px;background:var(--bg);box-shadow:var(--shadow)}
+
+/* sheet */
+.scrim{position:fixed;inset:0;z-index:30;background:var(--scrim)}
+.sheet{position:fixed;z-index:31;top:0;right:0;bottom:0;width:min(560px,100%);display:flex;flex-direction:column;background:var(--bg);border-left:1px solid var(--line);box-shadow:var(--shadow);
+  padding-top:env(safe-area-inset-top,0px);padding-right:env(safe-area-inset-right,0px);outline:0}
+.sheet-head{display:flex;justify-content:space-between;gap:12px;padding:20px 24px 12px}
+.sheet-head .actions{flex-wrap:nowrap;align-self:flex-start;gap:0}
+.sheet-head h2{overflow-wrap:anywhere;font-size:18px;line-height:26px}
+.sheet-body{flex:1;overflow:auto;padding:4px 24px 16px;display:flex;flex-direction:column;gap:12px}
+.sheet-body h3{margin-top:8px}
+.sheet-foot{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:12px 24px;padding-bottom:max(12px,env(safe-area-inset-bottom,0px));border-top:1px solid var(--line)}
+.block{border:1px solid var(--line);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.block.muted{background:var(--card)}
+.b-head{display:flex;justify-content:space-between;gap:8px}
+.picks{display:flex;flex-direction:column;gap:6px}
+.plain{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.people{margin:0;padding:0;list-style:none}
+.people li{display:flex;justify-content:space-between;gap:8px;padding:8px 0;border-top:1px solid var(--line);align-items:center}
+.people li:first-child{border-top:0}
+.results,.results ul{margin:0;padding:0;list-style:none}
+.res{padding:8px 0;border-top:1px solid var(--line)}
+.res:first-child{border-top:0}
+.results ul li{font-size:13px;color:var(--mute);padding-left:12px}
+.results li.ok{color:var(--ok)}.results li.bad{color:var(--bad)}
+.pre{white-space:pre-wrap;font-size:13px;color:var(--mute)}
+@media (max-width:640px){.sheet{border-left:0}.sheet-head,.sheet-body,.sheet-foot{padding-left:16px;padding-right:16px}}
+@media (prefers-reduced-motion:no-preference){.card,.row{transition:background-color .15s,border-color .15s}}
+
+</style>
+<div id="app" class="app"></div>
+<template id="brand-tpl"><div class="pd-brand"><svg role="img" aria-label="PandaDoc" width="116" height="28" viewBox="0 0 116 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 0H28V28H0V0Z" fill="#248567"/><path fill-rule="evenodd" clip-rule="evenodd" d="M69.8872 7.33887V12.5119C69.3401 11.7833 68.4648 11.3097 67.2975 11.3097C64.9997 11.3097 63.1758 13.1312 63.1758 15.6449C63.1758 18.1585 64.9997 19.98 67.2975 19.98C68.4648 19.98 69.3037 19.5065 69.8872 18.7779V19.7615H71.7112V7.33887H69.8872ZM64.9997 15.6449C64.9997 17.1021 65.9481 18.3043 67.48 18.3043C68.9755 18.3043 69.9603 17.1749 69.9603 15.6449C69.9603 14.1512 68.9755 12.9855 67.48 12.9855C65.9481 12.9855 64.9997 14.1877 64.9997 15.6449Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M36.366 15.062V19.7614H34.3965V7.70312H39.102C41.9104 7.70312 43.4059 9.12389 43.4059 11.3826C43.4059 13.6412 41.9104 15.062 39.102 15.062H36.366ZM36.366 9.52462V13.1676H39.0653C40.6339 13.1676 41.3633 12.5847 41.3633 11.3461C41.3633 10.1075 40.6339 9.52462 39.0653 9.52462H36.366Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M52.342 19.7614H50.5181V18.7778C49.9345 19.5064 49.0956 19.98 47.9283 19.98C45.6303 19.98 43.8066 18.1585 43.8066 15.6448C43.8066 13.1312 45.6303 11.3097 47.9283 11.3097C49.0956 11.3097 49.9709 11.7833 50.5181 12.5119V11.5283H52.342V19.7614ZM48.1109 18.3042C46.5787 18.3042 45.6303 17.102 45.6303 15.6448C45.6303 14.1876 46.5787 12.9854 48.1109 12.9854C49.6064 12.9854 50.5911 14.1512 50.5911 15.6448C50.5911 17.1749 49.6064 18.3042 48.1109 18.3042Z" fill="currentColor"/><path d="M62.0083 14.5884V19.7979H60.1843V15.1712C60.1843 13.7869 59.4549 13.0219 58.2512 13.0219C57.0838 13.0219 56.0991 13.7869 56.0991 15.2077V19.7979H54.2754V11.5283H56.0627V12.5483C56.7193 11.5647 57.7404 11.3097 58.616 11.3097C60.622 11.3097 62.0083 12.6576 62.0083 14.5884Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M79.8091 19.7614H81.633V11.5283H79.8091V12.5119C79.262 11.7833 78.3867 11.3097 77.2193 11.3097C74.9213 11.3097 73.0977 13.1312 73.0977 15.6448C73.0977 18.1585 74.9213 19.98 77.2193 19.98C78.3867 19.98 79.2255 19.5064 79.8091 18.7778V19.7614ZM74.9213 15.6448C74.9213 17.102 75.8697 18.3042 77.4019 18.3042C78.8974 18.3042 79.8822 17.1749 79.8822 15.6448C79.8822 14.1512 78.8974 12.9854 77.4019 12.9854C75.8697 12.9854 74.9213 14.1876 74.9213 15.6448Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M94.7642 13.7505C94.7642 10.1075 92.284 7.70312 88.4905 7.70312H83.6758V19.7979H88.4905C92.284 19.7979 94.7642 17.3935 94.7642 13.7505ZM85.6453 9.56105V17.9399H88.4905C91.3356 17.9399 92.7216 16.1913 92.7216 13.7505C92.7216 11.2733 91.3356 9.56105 88.4905 9.56105H85.6453Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M100.163 19.98C102.716 19.98 104.613 18.1221 104.613 15.6448C104.613 13.1676 102.716 11.3097 100.163 11.3097C97.6096 11.3097 95.7129 13.1676 95.7129 15.6448C95.7129 18.1221 97.6096 19.98 100.163 19.98ZM97.5732 15.6448C97.5732 17.2113 98.7039 18.3042 100.163 18.3042C101.658 18.3042 102.753 17.2113 102.753 15.6448C102.753 14.0783 101.622 12.9854 100.163 12.9854C98.7039 12.9854 97.5732 14.0783 97.5732 15.6448Z" fill="currentColor"/><path d="M111.944 13.8598L113.112 12.6212C112.382 11.7469 111.251 11.3097 110.048 11.3462C107.421 11.3462 105.707 13.2041 105.707 15.6813C105.707 18.1585 107.421 20.0165 110.048 20.0165C111.288 20.0165 112.382 19.5793 113.148 18.705L112.017 17.4664C111.47 17.9764 110.777 18.3407 109.975 18.3407C108.589 18.3407 107.531 17.2478 107.531 15.6813C107.531 14.1148 108.589 13.0219 109.975 13.0219C110.741 13.0219 111.361 13.3134 111.944 13.8598Z" fill="currentColor"/><path d="M114.042 8.32571H114.513C114.668 8.32571 114.792 8.35847 114.886 8.42405C114.98 8.4896 115.027 8.59205 115.027 8.73136V8.7375C115.027 8.83994 115 8.91984 114.947 8.97721C114.898 9.03456 114.833 9.07553 114.752 9.10011L115.106 9.67172H114.8L114.476 9.14928H114.335V9.67172H114.042V8.32571ZM114.507 8.94646C114.662 8.94646 114.739 8.88091 114.739 8.7498V8.74364C114.739 8.67398 114.719 8.62481 114.678 8.59612C114.637 8.56746 114.58 8.55312 114.507 8.55312H114.335V8.94646H114.507ZM114.507 10.1511C114.666 10.1511 114.813 10.1245 114.947 10.0712C115.082 10.0138 115.198 9.93602 115.296 9.83768C115.398 9.73523 115.478 9.61437 115.535 9.47503C115.592 9.33572 115.62 9.18207 115.62 9.01408C115.62 8.84608 115.592 8.69243 115.535 8.55312C115.482 8.41378 115.406 8.29496 115.308 8.19664C115.21 8.0942 115.092 8.01634 114.953 7.96307C114.819 7.90572 114.67 7.87703 114.507 7.87703C114.343 7.87703 114.193 7.90572 114.054 7.96307C113.919 8.01634 113.803 8.0942 113.705 8.19664C113.607 8.29906 113.53 8.41995 113.473 8.55926C113.42 8.69857 113.393 8.85222 113.393 9.02022C113.393 9.18821 113.422 9.34186 113.479 9.4812C113.536 9.62051 113.614 9.73933 113.711 9.83768C113.813 9.93602 113.932 10.0138 114.066 10.0712C114.205 10.1245 114.352 10.1511 114.507 10.1511ZM114.507 10.3724C114.319 10.3724 114.142 10.3376 113.975 10.2679C113.811 10.1983 113.668 10.104 113.546 9.98519C113.424 9.86226 113.326 9.71885 113.252 9.55496C113.183 9.39103 113.148 9.2128 113.148 9.02022C113.148 8.83174 113.183 8.65554 113.252 8.49164C113.322 8.32364 113.418 8.1782 113.54 8.05527C113.662 7.93234 113.805 7.83606 113.968 7.76638C114.136 7.69263 114.315 7.65576 114.507 7.65576C114.699 7.65576 114.876 7.69059 115.039 7.76024C115.206 7.8299 115.351 7.9262 115.474 8.04913C115.596 8.17206 115.692 8.31751 115.761 8.4855C115.83 8.6494 115.865 8.8256 115.865 9.01408C115.865 9.20666 115.828 9.38693 115.755 9.55496C115.685 9.71885 115.59 9.86226 115.467 9.98519C115.345 10.104 115.2 10.1983 115.033 10.2679C114.87 10.3376 114.694 10.3724 114.507 10.3724Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M20.523 10.2085L20.4525 10.244C19.8527 9.7471 19.0766 9.42762 18.0887 9.42762C16.8186 9.42762 15.6544 9.88906 14.8782 10.812L16.0778 12.0898C16.6775 11.5219 17.3126 11.2024 18.124 11.2024C19.641 11.2379 20.6289 12.4093 20.6289 13.9711C20.6289 15.5329 19.6058 16.7398 18.0534 16.7398C14.1726 16.7398 15.2663 9.42762 10.0449 9.42762C7.43417 9.42762 5.59961 11.3799 5.59961 13.9711V21.8867H7.46945V17.6627L7.54001 17.6272C8.13977 18.1241 8.91593 18.4436 9.90377 18.4436C11.1738 18.4436 12.3381 17.9821 13.1142 17.0592L11.9147 15.7814C11.315 16.3493 10.6799 16.6688 9.86849 16.6688C8.35145 16.6333 7.36361 15.4619 7.36361 13.9001C7.36361 12.3383 8.38673 11.1314 9.93905 11.1314C13.8198 11.1314 12.7262 18.4436 17.9476 18.4436C20.5583 18.4436 22.3929 16.4913 22.3929 13.9001V6.02002H20.523V10.2085Z" fill="white"/></svg></div></template>
+<script>
+"use strict";
+(() => {
+  // src/model.ts
+  var LANES = [
+    { id: "draft", title: "Draft", hint: "Not sent yet" },
+    { id: "approval", title: "In approval", hint: "Waiting on your approvers" },
+    { id: "sent", title: "Sent", hint: "Not opened yet" },
+    { id: "viewed", title: "Viewed", hint: "Opened, not signed" },
+    { id: "signed", title: "Signed", hint: "Completed or paid" },
+    { id: "lost", title: "Lost", hint: "Expired or declined" }
+  ];
+  var DEFAULTS = { stale: 3, draft: 7, approval: 2 };
+  var DAY = 864e5;
+  var daysSince = (iso, now = Date.now()) => {
+    if (!iso) return null;
+    const t = Date.parse(iso);
+    return Number.isNaN(t) ? null : Math.max(0, Math.floor((now - t) / DAY));
+  };
+  var daysUntil = (iso, now = Date.now()) => {
+    if (!iso) return null;
+    const t = Date.parse(iso);
+    return Number.isNaN(t) ? null : Math.ceil((t - now) / DAY);
+  };
+  var norm = (s) => s.toLowerCase().replace(/^document\./, "").replace(/[_-]+/g, " ").trim();
+  var LANE_BY_STATUS = {
+    draft: "draft",
+    uploaded: "draft",
+    "waiting approval": "approval",
+    "waiting for approval": "approval",
+    approved: "approval",
+    rejected: "approval",
+    sent: "sent",
+    scheduled: "sent",
+    "external review": "sent",
+    viewed: "viewed",
+    completed: "signed",
+    paid: "signed",
+    "waiting pay": "signed",
+    "waiting for payment": "signed",
+    expired: "lost",
+    declined: "lost"
+  };
+  var LABELS = {
+    "waiting approval": "Waiting for Approval",
+    "waiting for approval": "Waiting for Approval",
+    "waiting pay": "Waiting for Payment",
+    "waiting for payment": "Waiting for Payment",
+    "external review": "External Review"
+  };
+  function toDoc(raw) {
+    const id = typeof raw.id === "string" ? raw.id : "";
+    if (!id) return null;
+    const status = norm(String(raw.status ?? ""));
+    const str = (k) => typeof raw[k] === "string" ? raw[k] : null;
+    return {
+      id,
+      name: str("name") ?? "Untitled document",
+      label: LABELS[status] ?? status.replace(/\b\w/g, (c) => c.toUpperCase()),
+      lane: LANE_BY_STATUS[status] ?? null,
+      created: str("date_created"),
+      modified: str("date_modified"),
+      sent: str("date_sent"),
+      completed: str("date_completed"),
+      expires: str("expiration_date"),
+      url: str("document_url") ?? ""
+    };
+  }
+  function stageDays(d, now = Date.now()) {
+    const from = d.lane === "sent" || d.lane === "viewed" ? d.sent ?? d.modified : d.lane === "signed" ? d.completed ?? d.modified : d.modified ?? d.created;
+    return daysSince(from, now) ?? 0;
+  }
+  function attention(docs, t, now = Date.now()) {
+    const out = [];
+    for (const doc of docs) {
+      const age = stageDays(doc, now);
+      const left = daysUntil(doc.expires, now);
+      const open = doc.lane === "sent" || doc.lane === "viewed";
+      let hit = null;
+      if (open && left !== null && left <= 7 && left >= 0) {
+        hit = { reason: "expiring", days: left, why: left === 0 ? "Expires today" : `Expires in ${left} day${left === 1 ? "" : "s"}`, next: "nudge" };
+      } else if (doc.lane === "viewed" && age >= t.stale) {
+        hit = { reason: "viewed", days: age, why: `Opened, still unsigned after ${age} days`, next: "nudge" };
+      } else if (doc.lane === "sent" && age >= t.stale) {
+        hit = { reason: "unopened", days: age, why: `Not opened after ${age} days`, next: "nudge" };
+      } else if (doc.label === "Waiting for Approval" && age >= t.approval) {
+        hit = { reason: "approval", days: age, why: `Waiting for approval for ${age} days`, next: "review" };
+      } else if (doc.label === "Declined" && age <= 14) {
+        hit = { reason: "declined", days: age, why: "Declined by the buyer", next: "open" };
+      } else if (doc.lane === "draft" && age >= t.draft) {
+        hit = { reason: "draft", days: age, why: `Draft untouched for ${age} days`, next: "open" };
+      } else if (doc.label === "Error") {
+        hit = { reason: "error", days: age, why: "PandaDoc reports an error on this document", next: "open" };
+      }
+      if (hit) out.push({ doc, ...hit });
+    }
+    const rank = { expiring: 0, viewed: 1, unopened: 2, approval: 3, declined: 4, draft: 5, error: 6 };
+    return out.sort((a, b) => rank[a.reason] - rank[b.reason] || b.days - a.days);
+  }
+  function primaryCurrency(details) {
+    const n = /* @__PURE__ */ new Map();
+    for (const v of details.values()) if (v.amount !== null) n.set(v.currency, (n.get(v.currency) ?? 0) + 1);
+    return [...n.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? "USD";
+  }
+  function kpis(docs, details, att, now = Date.now()) {
+    const open = docs.filter((d) => d.lane === "sent" || d.lane === "viewed" || d.lane === "approval");
+    const risky = new Set(att.map((a) => a.doc.id));
+    let openValue = 0, atRisk = 0, priced = 0, skipped = 0;
+    const currency = primaryCurrency(details);
+    for (const d of open) {
+      const v = details.get(d.id);
+      if (!v || v.amount === null) continue;
+      if (v.currency !== currency) {
+        skipped++;
+        continue;
+      }
+      priced++;
+      openValue += v.amount;
+      if (risky.has(d.id)) atRisk += v.amount;
+    }
+    const spans = docs.filter((d) => d.lane === "signed" && d.sent && d.completed).map((d) => (Date.parse(d.completed) - Date.parse(d.sent)) / DAY).filter((x) => x >= 0).sort((a, b) => a - b);
+    const median = spans.length ? spans.length % 2 ? spans[(spans.length - 1) / 2] : (spans[spans.length / 2 - 1] + spans[spans.length / 2]) / 2 : null;
+    return {
+      out: docs.filter((d) => d.lane === "sent" || d.lane === "viewed").length,
+      openValue,
+      pricedOpen: priced,
+      open: open.length,
+      atRisk,
+      currency,
+      skipped,
+      medianToSign: median === null ? null : Math.round(median * 10) / 10,
+      needsYou: att.length
+    };
+  }
+  var money = (n, currency = "USD") => new Intl.NumberFormat("en-US", { style: "currency", currency, maximumFractionDigits: 0 }).format(n);
+  var parseAmount = (v) => {
+    const n = typeof v === "number" ? v : typeof v === "string" ? Number(v) : NaN;
+    return Number.isFinite(n) ? n : null;
+  };
+  function toDetails(raw) {
+    const total = raw.grand_total ?? {};
+    const recipients = Array.isArray(raw.recipients) ? raw.recipients : [];
+    return {
+      amount: parseAmount(total.amount),
+      currency: typeof total.currency === "string" ? total.currency : "USD",
+      recipients: recipients.map((r) => ({
+        id: String(r.id ?? ""),
+        email: String(r.email ?? ""),
+        name: [r.first_name, r.last_name].filter((x) => typeof x === "string" && x).join(" ") || String(r.email ?? "Recipient"),
+        type: String(r.recipient_type ?? "signer"),
+        completed: r.has_completed === true
+      })).filter((r) => r.id)
+    };
+  }
+  var pendingSigners = (d) => (d?.recipients ?? []).filter((r) => r.type.toLowerCase() === "signer" && !r.completed);
+  var canNudge = (d) => d.lane === "sent" || d.lane === "viewed";
+  var GROUP_ORDER = ["nudge", "approval", "closeout", "drafts"];
+  var GROUPS = {
+    nudge: { title: "Nudge now", hint: "With the buyer, waiting on a signature" },
+    approval: { title: "Chase approvers", hint: "Stuck inside your company" },
+    closeout: { title: "Close out", hint: "Declined or broken, decide what happens next" },
+    drafts: { title: "Clean up drafts", hint: "Untouched, send or archive" }
+  };
+  var actionGroup = (r) => r === "expiring" || r === "viewed" || r === "unopened" ? "nudge" : r === "approval" ? "approval" : r === "draft" ? "drafts" : "closeout";
+  function priorityScore(a, value) {
+    const urgency = a.reason === "expiring" ? 5 + (7 - Math.min(7, a.days)) * 0.5 : a.reason === "viewed" ? 4 + Math.min(14, a.days) / 7 : a.reason === "unopened" ? 3 + Math.min(14, a.days) / 7 : a.reason === "approval" ? 3 + Math.min(14, a.days) / 14 : a.reason === "declined" || a.reason === "error" ? 2 : 1;
+    return urgency * (1 + Math.log10(1 + Math.max(0, value ?? 0) / 1e3));
+  }
+  function heat(d, t, now = Date.now()) {
+    const age = stageDays(d, now);
+    const limit = d.lane === "sent" || d.lane === "viewed" ? t.stale : d.lane === "approval" ? t.approval : d.lane === "draft" ? t.draft : Infinity;
+    return age >= limit * 2 ? "hot" : age >= limit ? "warm" : "cool";
+  }
+  function signedLast30(docs, details, now = Date.now()) {
+    const currency = primaryCurrency(details);
+    let n = 0, value = 0;
+    for (const d of docs) {
+      if (d.lane !== "signed" || !d.completed) continue;
+      const ago = daysSince(d.completed, now);
+      if (ago === null || ago > 30) continue;
+      n++;
+      const v = details.get(d.id);
+      if (v && v.amount !== null && v.currency === currency) value += v.amount;
+    }
+    return { n, value, currency };
+  }
+  function splitName(name) {
+    const i = name.indexOf(" \xB7 ");
+    return i > 0 ? [name.slice(0, i), name.slice(i + 3)] : [name, ""];
+  }
+
+  // src/api.ts
+  var asFailure = (e) => ({ code: String(e?.code ?? "upstream_error"), message: String(e?.message ?? e ?? "") });
+  var results = (payload) => Array.isArray(payload) ? payload : Array.isArray(payload?.results) ? payload.results : [];
+  async function connectLive() {
+    const mcp = typeof claude === "undefined" ? null : await claude.use("mcp").catch(() => null);
+    if (!mcp) return { ok: false, failure: { code: "no_mcp", message: "This page was opened without connector access." } };
+    let servers = [];
+    try {
+      servers = (await mcp.listTools()).servers;
+    } catch (e) {
+      return { ok: false, failure: asFailure(e) };
+    }
+    const pd = servers.filter((s) => /pandadoc/i.test(s.server));
+    const pick = pd.find((s) => !/staging/i.test(s.server)) ?? pd[0];
+    if (!pick) return { ok: false, failure: { code: "server_not_connected", message: "No PandaDoc connector found." } };
+    if (pick.authStatus === "needs_reauth") return { ok: false, failure: { code: "needs_reauth", message: "PandaDoc needs to be reconnected." } };
+    const server = pick.server;
+    const call = (tool, input, cache) => mcp.callTool(server, tool, input, cache ? { cache } : void 0);
+    const api = {
+      mode: "live",
+      subscribe(onDocs, onError) {
+        return mcp.watchTool(server, "documents_list", { count: 100, page: 1, sort_by: "date_status_changed", sort_order: "desc" }, (ev) => {
+          if (ev.type === "error") return onError(asFailure(ev.error));
+          const docs = results(ev.result.payload).map(toDoc).filter((d) => d !== null);
+          onDocs(docs, ev.result.cache?.storedAt ?? null);
+        }, { refetchInterval: 12e4 });
+      },
+      async refresh() {
+        await mcp.invalidate(server, "documents_list").catch(() => {
+        });
+      },
+      async older(page) {
+        const r = await call("documents_list", { count: 100, page, sort_by: "date_status_changed", sort_order: "desc" });
+        return results(r.payload).map(toDoc).filter((d) => d !== null);
+      },
+      async details(id) {
+        const r = await call("documents_details_get", { document_id: id }, { staleTime: 3e5, gcTime: 6e5 });
+        return toDetails(r.payload ?? {});
+      },
+      async summary(id) {
+        return (await call("documents_summary_get", { document_id: id, summary_type: "short" })).payload;
+      },
+      async activity(id) {
+        return (await call("documents_audit_trail_get", { document_id: id })).payload;
+      },
+      async remind(id, recipients, subject, message) {
+        const input = { document_id: id, reminders: recipients.map((r2) => ({ recipient_id: r2.id, email: true })) };
+        if (subject.trim()) input.subject = subject.trim();
+        if (message.trim()) input.message = message.trim();
+        const r = await call("documents_reminder_send", input);
+        return { lines: readReminders(r.payload, recipients), raw: r.payload, simulated: false };
+      },
+      async setStatus(id, status, note, notify) {
+        const r = await call("documents_status_change", { document_id: id, status, note: note.trim() || null, notify_recipients: notify });
+        return { lines: [{ who: status, status: "sent", detail: "Status changed" }], raw: r.payload, simulated: false };
+      },
+      async archive(id) {
+        const r = await call("documents_archive", { document_id: id });
+        return { lines: [{ who: "Archive", status: "sent", detail: "Moved to the archive" }], raw: r.payload, simulated: false };
+      }
+    };
+    return { ok: true, api, server };
+  }
+  function readReminders(payload, asked) {
+    const rows = Array.isArray(payload) ? payload : ["results", "reminders", "recipients", "data"].map((k) => payload?.[k]).find(Array.isArray) ?? [];
+    const lines = rows.map((row) => {
+      const id = String(row.recipient_id ?? row.id ?? "");
+      const who = asked.find((a) => a.id === id)?.email ?? row.email_address ?? (id || "Recipient");
+      const email = row.email ?? row.email_status;
+      const status = typeof email === "string" ? email : email?.status;
+      const detail = typeof email === "object" ? email?.detail : row.detail;
+      return { who: String(who), status: status === "sent" ? "sent" : "failed", detail: status === "sent" ? void 0 : String(detail ?? status ?? "Not sent") };
+    });
+    return lines.length ? lines : [{ who: "PandaDoc", status: "info", detail: "PandaDoc answered in a format this board does not read. Check the raw response." }];
+  }
+  var SEEDS = [
+    // Opened, not signed, high value: "which deals are stalling?"
+    {
+      n: "Ashgrove Manufacturing \xB7 Supply agreement",
+      s: "Viewed",
+      age: 7,
+      amt: 25e4,
+      exp: 6,
+      views: 5,
+      p: [["Helen Marsh"], ["Victor Lang"], ["Priya Anand", "CC"]],
+      sum: "Three-year supply agreement for machined parts with volume tiers. Helen Marsh has opened it five times since it was sent and has not signed."
+    },
+    {
+      n: "Northwind Freight \xB7 Master services agreement",
+      s: "Viewed",
+      age: 6,
+      amt: 84e3,
+      exp: 4,
+      views: 3,
+      p: [["Dana Whitfield"], ["Arjun Mehta"], ["Olu Bankole", "CC"]],
+      note: "Dana said legal is reviewing clause 7. Follow up Thursday.",
+      nudged: 2,
+      sum: "Master services agreement covering freight and warehousing for 24 months, with a 3 percent annual uplift."
+    },
+    { n: "Larkspur Clinics \xB7 Equipment lease", s: "Viewed", age: 5, amt: 46500, views: 2, p: [["Marcus Oyelaran"]] },
+    {
+      n: "Corvid Telecom \xB7 Reseller agreement",
+      s: "Viewed",
+      age: 4,
+      amt: 72e3,
+      views: 3,
+      p: [["Yara Haddad", "signer", true], ["Colin Reeve"]],
+      note: "Colin is on leave until Monday.",
+      sum: "Reseller agreement with a 15 percent partner discount. Yara Haddad has signed; Colin Reeve, the second signer, has not."
+    },
+    { n: "Meridian Dental \xB7 Practice software", s: "Viewed", age: 4, amt: 9600, views: 1, p: [["Aiko Tanaka"]] },
+    { n: "Pelican Bay Marine \xB7 Dock lease", s: "Viewed", age: 2, amt: 18400, views: 2, p: [["Gwen Ashby"], ["Tobias Reed", "signer", true]] },
+    { n: "Ferncliff Hotels \xB7 Group booking", s: "Viewed", age: 1, amt: 27900, views: 1, p: [["Jonas Weil"]] },
+    // Sent, never opened, plus the edge cases
+    { n: "Harbor & Pike \xB7 Annual renewal", s: "Sent", age: 4, amt: 38200, exp: 5, p: [["Priya Raman"]], sum: "Annual renewal at last year's price with one added seat." },
+    { n: "Quillstone Legal \xB7 Retainer", s: "Sent", age: 5, amt: 12e3, p: [["Tom Brandt"]], nudged: 3 },
+    { n: "Skyline Dental Group \xB7 Multi-site services agreement with annex A (equipment), annex B (maintenance) and annex C (staff training)", s: "Sent", age: 8, amt: 33e3, p: [["Ingrid Solheim"]] },
+    { n: "Granary Foods \xB7 Distribution addendum", s: "Sent", age: 6, amt: 15500, p: [["Mateo Cruz"], ["Beth Okoye", "CC"]] },
+    { n: "Obsidian Labs \xB7 Pilot agreement", s: "Sent", age: 7, amt: 14e3, exp: 2, p: [["Ravi Shah"], ["Mei Zhou"]], nudged: 1 },
+    {
+      n: "Redfern Archives \xB7 Records contract",
+      s: "Sent",
+      age: 3,
+      amt: 6900,
+      p: [["Noor Karim", "CC"]],
+      sum: "Sent with no signer assigned: the only recipient is a CC. It cannot be signed until a signer is added."
+    },
+    { n: "Rhine Valley Optics \xB7 Reseller terms", s: "Sent", age: 2, amt: 29e3, cur: "EUR", p: [["Lukas Brandl"]] },
+    { n: "Tidewater Solar \xB7 Install proposal", s: "Sent", age: 1, amt: 61250, p: [["Lena Okafor"]] },
+    { n: "Cobalt Bakery \xB7 Catering contract", s: "Sent", age: 2, amt: 4800, p: [["Rosa Ibarra"]] },
+    { n: "Westgate Realty \xB7 Listing agreement", s: "Sent", age: 1, amt: 5200, p: [["Carla Pinto"]] },
+    { n: "Juniper Ridge Schools \xB7 Software license", s: "Sent", age: 0, amt: 21e3, p: [["Alma Quist"]] },
+    // Waiting for approval
+    {
+      n: "Lakeshore Energy \xB7 Service contract",
+      s: "Waiting for Approval",
+      age: 6,
+      amt: 98e3,
+      p: [["Joel Park"], ["Dana Okeke", "approver"]],
+      sum: "Needs Finance approval: payment terms are net 90, the policy limit is net 45."
+    },
+    {
+      n: "Brightline Logistics \xB7 Statement of work",
+      s: "Waiting for Approval",
+      age: 5,
+      amt: 132e3,
+      p: [["Carla Mendes"], ["Dana Okeke", "approver"], ["Sam Ferris", "approver"]],
+      sum: "An 18 percent discount needs Finance and Legal approval. Neither has responded."
+    },
+    { n: "Summit Peak Outfitters \xB7 Wholesale terms", s: "Waiting for Approval", age: 2, amt: 22400, p: [["Nadia Farouk"], ["Dana Okeke", "approver"]] },
+    { n: "Orchard Row \xB7 Sponsorship package", s: "Waiting for Approval", age: 1, amt: 15e3, p: [["Ben Hartley"], ["Sam Ferris", "approver"]] },
+    // Drafts
+    { n: "Ivory Coast Imports \xB7 Framework agreement", s: "Draft", age: 30, amt: 45e3, p: [["Kofi Mensah"]] },
+    { n: "Redwood Credit Union \xB7 Vendor onboarding", s: "Draft", age: 21, amt: 0, p: [["Hana Sato"]] },
+    { n: "Polar Cold Storage \xB7 Lease renewal", s: "Draft", age: 12, amt: 56e3, p: [["Erik Lund"]] },
+    { n: "Kestrel Analytics \xB7 Pilot agreement", s: "Draft", age: 9, amt: 18e3, p: [["Oliver Grant"]] },
+    { n: "Fable & Finch \xB7 Author agreement", s: "Draft", age: 4, amt: 3200, p: [["Tess Whitcombe"]] },
+    { n: "Lumen Studios \xB7 Production quote", s: "Draft", age: 2, amt: 7400, p: [["Felix Aaron"]] },
+    { n: "Saltmarsh Bikes \xB7 Fleet order", s: "Draft", age: 1, amt: 11300, p: [["Ines Duarte"]] },
+    // Signed: fast and slow, so the median means something
+    { n: "Tamarind Kitchens \xB7 Franchise addendum", s: "Completed", age: 2, amt: 31e3, tts: 3, p: [["Devika Rao", "signer", true]] },
+    { n: "Alder & Finch \xB7 NDA", s: "Completed", age: 1, amt: 0, tts: 1, p: [["Wes Calloway", "signer", true]] },
+    { n: "Foxglove Events \xB7 Venue hold", s: "Completed", age: 4, amt: 6200, tts: 1, p: [["Greta Voss", "signer", true]] },
+    { n: "Paperlane Press \xB7 Print agreement", s: "Completed", age: 3, amt: 8900, tts: 4, p: [["Maya Lindqvist", "signer", true]] },
+    { n: "Granite Bay Builders \xB7 Subcontract", s: "Completed", age: 5, amt: 54e3, tts: 9, p: [["Ravi Menon", "signer", true], ["Ellie Marsh", "signer", true]] },
+    { n: "Willow Health \xB7 Data processing addendum", s: "Completed", age: 8, amt: 0, tts: 2, p: [["Elise Dubois", "signer", true]] },
+    { n: "Pinecrest Schools \xB7 Software license", s: "Completed", age: 10, amt: 19500, tts: 6, p: [["Omar Haddad", "signer", true]] },
+    { n: "Halcyon Pharma \xB7 Master services agreement", s: "Completed", age: 14, amt: 12e4, tts: 17, p: [["Ruth Adeyemi", "signer", true], ["Hugo Laurent", "signer", true]] },
+    { n: "Beacon Ridge \xB7 Maintenance plan", s: "Paid", age: 7, amt: 14250, tts: 5, p: [["Diego Salas", "signer", true]] },
+    { n: "Cedar & Stone \xB7 Invoice terms", s: "Waiting for Payment", age: 3, amt: 9800, tts: 2, p: [["Annika Berg", "signer", true]] },
+    // Lost
+    { n: "Marlow Insurance \xB7 Broker agreement", s: "Declined", age: 2, amt: 27e3, p: [["Pavel Novak"]], ev: [[2, 'Declined by Pavel Novak: "Our legal team wants clause 7 reworked."']] },
+    { n: "Driftwood Coffee \xB7 Supply contract", s: "Declined", age: 5, amt: 9800, p: [["Sam Okoro"]], ev: [[5, 'Declined by Sam Okoro: "Pricing is above our budget this quarter."']] },
+    { n: "Eastgate Gym \xB7 Membership terms", s: "Declined", age: 25, amt: 4e3, p: [["Lou Pereira"]] },
+    { n: "Mistral Wines \xB7 Distributor agreement", s: "Expired", age: 9, amt: 17500, p: [["Camille Roux"]] },
+    { n: "Ironbridge Capital \xB7 Advisory letter", s: "Expired", age: 21, amt: 3e4, p: [["Claire Nakamura"]] }
+  ];
+  var dayAgo = (d) => new Date(Date.now() - d * 864e5).toISOString();
+  var dayAhead = (d) => new Date(Date.now() + d * 864e5).toISOString();
+  var SELLER = "You";
+  function connectDemo() {
+    let docs = [];
+    const seeds = /* @__PURE__ */ new Map();
+    const memory = { notes: {}, nudgedDaysAgo: {} };
+    let push = null;
+    const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+    SEEDS.forEach((sd, i) => {
+      const id = `demo${String(i + 1).padStart(3, "0")}`;
+      seeds.set(id, sd);
+      const signedOff = sd.s === "Completed" || sd.s === "Paid" || sd.s === "Waiting for Payment";
+      const out = sd.s !== "Draft" && sd.s !== "Waiting for Approval";
+      const sent = out ? dayAgo(signedOff ? sd.age + (sd.tts ?? 3) : sd.age) : null;
+      docs.push(toDoc({
+        id,
+        name: sd.n,
+        status: sd.s,
+        date_created: dayAgo(sd.age + (sd.tts ?? 3) + 3),
+        date_modified: dayAgo(sd.age),
+        date_sent: sent,
+        date_completed: signedOff ? dayAgo(sd.age) : null,
+        expiration_date: sd.exp !== void 0 ? dayAhead(sd.exp) : sd.s === "Expired" ? dayAgo(sd.age) : out ? dayAhead(25) : null,
+        document_url: "https://app.pandadoc.com/"
+      }));
+      if (sd.note) memory.notes[id] = sd.note;
+      if (sd.nudged !== void 0) memory.nudgedDaysAgo[id] = sd.nudged;
+    });
+    const recipients = (id, sd) => sd.p.map(([name, role, signed], i) => ({
+      id: `${id}-r${i + 1}`,
+      name,
+      type: role ?? "signer",
+      email: `${name.toLowerCase().replace(/[^a-z]+/g, ".")}+demo@example.com`,
+      completed: signed === true || (sd.s === "Completed" || sd.s === "Paid" || sd.s === "Waiting for Payment") && (role ?? "signer") === "signer"
+    }));
+    const activity = (id, sd) => {
+      const first = sd.p.find((p) => (p[1] ?? "signer") === "signer")?.[0] ?? "the recipient";
+      const done = ["Completed", "Paid", "Waiting for Payment"].includes(sd.s);
+      const sentAgo = done ? sd.age + (sd.tts ?? 3) : sd.age;
+      const ev = [{ date: dayAgo(sentAgo + 3), action: `Created by ${SELLER}` }];
+      if (sd.s === "Waiting for Approval") ev.push({ date: dayAgo(sd.age), action: "Approval requested from " + sd.p.filter((p) => p[1] === "approver").map((p) => p[0]).join(" and ") });
+      if (sd.s !== "Draft" && sd.s !== "Waiting for Approval") ev.push({ date: dayAgo(sentAgo), action: `Sent to ${sd.p.filter((p) => (p[1] ?? "signer") === "signer").map((p) => p[0]).join(" and ")}` });
+      for (let k = 1; k <= (sd.views ?? 0); k++) ev.push({ date: dayAgo(Math.max(0, sd.age - k)), action: `Viewed by ${first}` });
+      for (const [name, , signed] of sd.p) if (signed) ev.push({ date: dayAgo(Math.max(0, done ? sd.age : sd.age - 1)), action: `Signed by ${name}` });
+      if (sd.nudged !== void 0) ev.push({ date: dayAgo(sd.nudged), action: `Reminder sent by ${SELLER}` });
+      for (const [d, text] of sd.ev ?? []) ev.push({ date: dayAgo(d), action: text });
+      return ev.sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
+    };
+    return {
+      mode: "demo",
+      memory,
+      subscribe(onDocs) {
+        push = onDocs;
+        queueMicrotask(() => onDocs([...docs], null));
+        return () => {
+          push = null;
+        };
+      },
+      async older() {
+        return [];
+      },
+      async refresh() {
+      },
+      async details(id) {
+        await wait(80);
+        const sd = seeds.get(id);
+        return { amount: sd.amt ?? 0, currency: sd.cur ?? "USD", recipients: recipients(id, sd) };
+      },
+      async summary(id) {
+        await wait(250);
+        const sd = seeds.get(id);
+        return sd.sum ?? `${sd.n.split(" \xB7 ")[1] ?? "Agreement"} for ${sd.n.split(" \xB7 ")[0]}, to be signed by ${sd.p.filter((p) => (p[1] ?? "signer") === "signer").map((p) => p[0]).join(" and ")}.`;
+      },
+      async activity(id) {
+        await wait(150);
+        return activity(id, seeds.get(id));
+      },
+      async remind(id, recipients2) {
+        await wait(450);
+        return { lines: recipients2.map((r) => ({ who: r.email, status: "sent" })), raw: null, simulated: true };
+      },
+      async setStatus(id, status) {
+        await wait(300);
+        docs = docs.map((d) => d.id === id ? { ...d, label: status, lane: "lost", modified: (/* @__PURE__ */ new Date()).toISOString() } : d);
+        push?.([...docs], null);
+        return { lines: [{ who: status, status: "sent", detail: "Status changed" }], raw: null, simulated: true };
+      },
+      async archive(id) {
+        await wait(300);
+        docs = docs.filter((d) => d.id !== id);
+        push?.([...docs], null);
+        return { lines: [{ who: "Archive", status: "sent", detail: "Moved to the archive" }], raw: null, simulated: true };
+      }
+    };
+  }
+
+  // src/board.ts
+  var esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  var $ = (id) => document.getElementById(id);
+  var plural = (n, w) => `${n} ${w}${n === 1 ? "" : "s"}`;
+  var ageText = (d) => d === 0 ? "today" : `${d}d`;
+  var ICON = {
+    sparkle: "m12 2 2.05 7.95L22 12l-7.95 2.05L12 22l-2.05-7.95L2 12l7.95-2.05z",
+    open: "M14 3h7v7h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H14zM3 5h8v2H5v12h12v-6h2v8H3z",
+    check: "m9 16.2-4.2-4.2-1.4 1.4L9 19 21 7l-1.4-1.4z",
+    refresh: "M12 4a8 8 0 0 1 7.5 5H17v2h6V5h-2v2.3A10 10 0 0 0 2 12h2a8 8 0 0 1 8-8zm8 8a8 8 0 0 1-15.5 3H7v-2H1v6h2v-2.3A10 10 0 0 0 22 12z",
+    close: "m6.4 5 5.6 5.6L17.6 5 19 6.4 13.4 12l5.6 5.6-1.4 1.4-5.6-5.6L6.4 19 5 17.6l5.6-5.6L5 6.4z"
+  };
+  var icon = (n) => `<svg class="pd-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="${ICON[n]}"/></svg>`;
+  var REASON = {
+    expiring: { label: "Expiring", tone: "bad" },
+    viewed: { label: "Opened, unsigned", tone: "warn" },
+    unopened: { label: "Not opened", tone: "warn" },
+    approval: { label: "Needs approval", tone: "warn" },
+    declined: { label: "Declined", tone: "bad" },
+    draft: { label: "Stale draft", tone: "mute" },
+    error: { label: "Error", tone: "bad" }
+  };
+  function failureCopy(f) {
+    switch (f.code) {
+      case "needs_reauth":
+        return { text: "Your PandaDoc connection expired. Reconnect PandaDoc in Settings, then Connectors, and reload this page.", action: "retry" };
+      case "server_not_connected":
+      case "server_not_found":
+        return { text: "PandaDoc is not connected to this account. Add the PandaDoc connector in Settings, then Connectors.", action: "retry" };
+      case "selection_required":
+        return { text: "You have more than one PandaDoc connector. Choose one when Claude asks, then retry.", action: "retry" };
+      case "not_in_manifest":
+      case "approval_required":
+      case "consent_required":
+      case "not_granted":
+        return { text: "This board needs your permission to read PandaDoc.", action: "allow" };
+      case "blocked_by_policy":
+        return { text: "Your organization blocks a PandaDoc tool this board uses." };
+      case "no_mcp":
+        return { text: "Sample data. Publish this page as a Claude artifact with the PandaDoc connector to see your own documents." };
+      case "server_unavailable":
+      case "upstream_error":
+        return { text: "PandaDoc did not answer. The last data stays on screen.", action: "retry" };
+      default:
+        return { text: `PandaDoc returned an error (${f.code}).`, action: "retry" };
+    }
+  }
+  var aiCopy = (code) => ({
+    not_granted: "Claude is not allowed for this page. Allow it when asked, or reload.",
+    sampling_disabled: "Claude is not available for this account.",
+    rate_limited: "Too many requests to Claude. Try again in a minute.",
+    invalid_json: "Claude's answer could not be read. Try the question again.",
+    session_expired: "Sign in to Claude again, then retry."
+  })[code] ?? "Claude could not answer. Try again.";
+  var S = {
+    api: connectDemo(),
+    live: null,
+    server: "",
+    docs: [],
+    details: /* @__PURE__ */ new Map(),
+    selected: /* @__PURE__ */ new Set(),
+    q: "",
+    showSnoozed: false,
+    view: "focus",
+    sortBy: "priority",
+    onlyNeeds: false,
+    laneFilter: null,
+    cursor: null,
+    askOpen: false,
+    quietOpen: false,
+    groupOpen: /* @__PURE__ */ new Set(),
+    openLanes: /* @__PURE__ */ new Set(),
+    // Signed and Lost start collapsed
+    toast: null,
+    expanded: /* @__PURE__ */ new Set(),
+    updatedAt: Date.now(),
+    loading: false,
+    failure: null,
+    liveSaved: { snoozed: {}, notes: {}, nudged: {}, log: [], th: { ...DEFAULTS } },
+    saved: null,
+    persist: null,
+    hasAI: false,
+    hasTools: false,
+    sample: null,
+    sheet: null,
+    highlight: /* @__PURE__ */ new Set(),
+    answer: null,
+    ctl: null,
+    unsub: () => {
+    },
+    olderPage: 1
+  };
+  S.saved = S.liveSaved;
+  var byId = (id) => S.docs.find((d) => d.id === id);
+  var snoozed = (id) => (S.saved.snoozed[id] ?? 0) > Date.now();
+  var live = () => S.api.mode === "live";
+  var saveTimer;
+  function save() {
+    if (!S.persist || !live()) return;
+    clearTimeout(saveTimer);
+    saveTimer = window.setTimeout(() => {
+      S.persist?.set(S.saved).catch(() => {
+      });
+    }, 600);
+  }
+  function logAction(text) {
+    S.saved.log = [{ t: Date.now(), text }, ...S.saved.log].slice(0, 40);
+    save();
+  }
+  var rafId = 0;
+  var renderSoon = () => {
+    cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(renderAll);
+  };
+  function memoryFor(api) {
+    if (api.mode === "live") return S.liveSaved;
+    const m = api.memory;
+    return {
+      snoozed: {},
+      notes: { ...m?.notes ?? {} },
+      log: [],
+      th: { ...DEFAULTS },
+      nudged: Object.fromEntries(Object.entries(m?.nudgedDaysAgo ?? {}).map(([id, d]) => [id, Date.now() - d * 864e5 - 36e5]))
+    };
+  }
+  function start(api) {
+    S.unsub();
+    S.api = api;
+    S.saved = memoryFor(api);
+    S.docs = [];
+    S.details.clear();
+    S.selected.clear();
+    S.sheet = null;
+    S.highlight.clear();
+    S.answer = null;
+    S.olderPage = 1;
+    S.loading = api.mode === "live";
+    S.unsub = api.subscribe(
+      (docs, storedAt) => {
+        S.docs = mergeOlder(docs);
+        S.selected = new Set([...S.selected].filter((id) => byId(id)));
+        S.updatedAt = storedAt ?? Date.now();
+        S.loading = false;
+        S.failure = null;
+        enrich();
+        renderSoon();
+      },
+      (f) => {
+        S.loading = false;
+        S.failure = f;
+        if (live() && !S.docs.length) {
+          useDemo();
+          S.failure = f;
+        }
+        renderSoon();
+      }
+    );
+    renderAll();
+  }
+  var older = [];
+  var mergeOlder = (fresh) => {
+    const ids = new Set(fresh.map((d) => d.id));
+    return [...fresh, ...older.filter((d) => !ids.has(d.id))];
+  };
+  function useDemo() {
+    older = [];
+    start(connectDemo());
+  }
+  function useLive() {
+    if (S.live) {
+      older = [];
+      S.failure = null;
+      start(S.live);
+    }
+  }
+  var inflight = /* @__PURE__ */ new Set();
+  async function ensureDetails(id) {
+    const have = S.details.get(id);
+    if (have) return have;
+    if (inflight.has(id)) return void 0;
+    inflight.add(id);
+    try {
+      const d = await S.api.details(id);
+      S.details.set(id, d);
+      return d;
+    } catch {
+      return void 0;
+    } finally {
+      inflight.delete(id);
+    }
+  }
+  async function enrich() {
+    const api = S.api;
+    const open = (d) => d.lane === "sent" || d.lane === "viewed" || d.lane === "approval";
+    const todo = [...S.docs.filter(open), ...S.docs.filter((d) => !open(d) && (d.lane === "draft" || d.lane === "signed"))].filter((d) => !S.details.has(d.id)).slice(0, 60);
+    let i = 0;
+    const worker = async () => {
+      while (i < todo.length && S.api === api) {
+        await ensureDetails(todo[i++].id);
+        renderSoon();
+      }
+    };
+    await Promise.all([worker(), worker(), worker(), worker()]);
+  }
+  async function refresh() {
+    S.loading = true;
+    renderSoon();
+    await S.api.refresh();
+    S.loading = false;
+    renderSoon();
+  }
+  async function loadOlder() {
+    S.olderPage += 1;
+    try {
+      const more = await S.api.older(S.olderPage);
+      older = [...older, ...more.filter((m) => !older.some((o) => o.id === m.id))];
+      S.docs = [...S.docs, ...more.filter((m) => !S.docs.some((d) => d.id === m.id))];
+      enrich();
+    } catch (e) {
+      S.failure = asFailure(e);
+    }
+    renderSoon();
+  }
+  var DAYMS = 864e5;
+  var visible = (d) => !S.q || d.name.toLowerCase().includes(S.q.toLowerCase());
+  var recentlyNudged = (id) => (S.saved.nudged[id] ?? 0) > Date.now() - DAYMS;
+  var amountOf = (id) => S.details.get(id)?.amount ?? null;
+  function queue() {
+    const all = attention(S.docs.filter(visible), S.saved.th);
+    const snoozedCount = all.filter((a) => snoozed(a.doc.id)).length;
+    const live2 = all.filter((a) => S.showSnoozed || !snoozed(a.doc.id));
+    const quiet = live2.filter((a) => a.next === "nudge" && recentlyNudged(a.doc.id));
+    const active = live2.filter((a) => !quiet.includes(a));
+    const score = (a) => S.sortBy === "value" ? amountOf(a.doc.id) ?? 0 : priorityScore(a, amountOf(a.doc.id));
+    const groups = GROUP_ORDER.map((g) => ({ g, items: active.filter((a) => actionGroup(a.reason) === g).sort((x, y) => score(y) - score(x)) })).filter((x) => x.items.length).sort((x, y) => score(y.items[0]) - score(x.items[0]));
+    return { groups, quiet, total: active.length, startId: groups[0]?.items[0]?.doc.id ?? null, snoozedCount };
+  }
+  var sumValue = (ids) => {
+    const cur = primaryCurrency(S.details);
+    return ids.reduce((n, id) => {
+      const v = S.details.get(id);
+      return n + (v && v.currency === cur && v.amount !== null ? v.amount : 0);
+    }, 0);
+  };
+  function boardExtras(d) {
+    const det = S.details.get(d.id);
+    const signers = (det?.recipients ?? []).filter((r) => r.type.toLowerCase() === "signer");
+    const left = d.expires && (d.lane === "sent" || d.lane === "viewed") ? daysUntil(d.expires) : null;
+    return (signers.length ? ` | signed ${signers.filter((r) => r.completed).length}/${signers.length}` : "") + (left !== null && left <= 14 ? ` | expires in ${left}d` : "") + (S.saved.notes[d.id] ? ` | seller's note: ${S.saved.notes[d.id]}` : "");
+  }
+  var valueOf = (id) => {
+    const v = S.details.get(id);
+    return v && v.amount !== null ? money(v.amount, v.currency) : "\u2014";
+  };
+  var attentionList = () => queue().groups.flatMap((g) => g.items);
+  function progress(d) {
+    if (d.lane !== "sent" && d.lane !== "viewed") return "";
+    const sg = (S.details.get(d.id)?.recipients ?? []).filter((r) => r.type.toLowerCase() === "signer");
+    if (sg.length < 2) return "";
+    const done = sg.filter((r) => r.completed).length;
+    return `<span class="prog" title="${done} of ${sg.length} signers have signed">${sg.map((r) => `<i class="${r.completed ? "on" : ""}"></i>`).join("")}<span>${done}/${sg.length}</span></span>`;
+  }
+  function renderAll() {
+    renderTop();
+    renderBanner();
+    renderAsk();
+    renderAnswer();
+    renderKpis();
+    renderViews();
+    renderBulk();
+    renderSheet();
+    renderToast();
+  }
+  function renderViews() {
+    renderFocus();
+    renderLanes();
+  }
+  function renderTop() {
+    const m = $("modeBtn");
+    m.textContent = live() ? "Live \xB7 PandaDoc" : "Sample data";
+    m.dataset.mode = S.api.mode;
+    m.title = live() ? "Switch to sample data" : S.live ? "Switch to your PandaDoc documents" : "Connect PandaDoc to see your own documents";
+    $("modeBtn").disabled = !live() && !S.live;
+    $("fresh").textContent = live() ? S.loading ? "Updating\u2026" : `Updated ${freshness()}` : "Synthetic deals, actions are simulated";
+    document.querySelectorAll("[data-act=view]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.v === S.view)));
+    $("focus").hidden = S.view !== "focus";
+    $("lanes").hidden = S.view !== "board";
+    $("askBtn").hidden = !S.hasAI;
+  }
+  function freshness() {
+    const m = Math.floor((Date.now() - S.updatedAt) / 6e4);
+    return m < 1 ? "just now" : m === 1 ? "1 min ago" : m < 60 ? `${m} min ago` : `${Math.floor(m / 60)} h ago`;
+  }
+  function renderBanner() {
+    const el = $("banner");
+    if (!S.failure) {
+      el.innerHTML = "";
+      return;
+    }
+    const c = failureCopy(S.failure);
+    const btn = c.action === "allow" ? `<button data-act="allow">Allow access</button>` : c.action === "retry" ? `<button data-act="retry">Try again</button>` : "";
+    el.innerHTML = `<div class="banner" role="status"><span>${esc(c.text)}</span>${btn}</div>`;
+  }
+  function renderAsk() {
+    const el = $("ask");
+    el.hidden = !S.hasAI || !S.askOpen;
+    if (!S.hasAI || el.dataset.ready) return;
+    el.dataset.ready = "1";
+    el.innerHTML = `
+    <form class="ask-form" id="askForm">
+      <span class="ai-mark">${icon("sparkle")}Ask Claude</span>
+      <input id="askIn" type="text" autocomplete="off" placeholder="Which deals over $20k are stalling?" aria-label="Ask about your pipeline">
+      <button class="primary" type="submit" id="askGo">Ask</button>
+      <button type="button" data-act="brief" id="briefGo">${icon("sparkle")}Today's brief</button>
+    </form>
+    <div class="chips">
+      ${["Who opened but has not signed?", "What expires this week?", "Where is the most money waiting?"].map((q) => `<button class="chip" type="button" data-act="chip" data-q="${esc(q)}">${esc(q)}</button>`).join("")}
+    </div>`;
+  }
+  function renderAnswer() {
+    const el = $("answer");
+    const a = S.answer;
+    if (!a) {
+      el.innerHTML = "";
+      return;
+    }
+    if (a.state === "thinking") {
+      el.innerHTML = `<div class="answer"><span class="think">Thinking\u2026</span><button class="text-button" data-act="stop">Stop</button></div>`;
+      return;
+    }
+    if (a.state === "error") {
+      el.innerHTML = `<div class="answer err-box"><span>${esc(a.text)}</span><button class="text-button" data-act="dismiss">Dismiss</button></div>`;
+      return;
+    }
+    const chips = (a.ids ?? []).map((id) => byId(id)).filter(Boolean).map((d) => `<button class="chip doc" data-act="open" data-id="${esc(d.id)}">${esc(d.name)}</button>`).join("");
+    if (a.kind === "brief") {
+      const items = (a.items ?? []).map((it) => {
+        const d = byId(it.id);
+        if (!d) return "";
+        const n = canNudge(d) ? `<button data-act="nudge-one" data-id="${esc(d.id)}">Nudge</button>` : "";
+        return `<li><div><strong>${esc(d.name)}</strong><p>${esc(it.why)} <em>${esc(it.do)}</em></p></div><div class="actions">${n}<button class="text-button" data-act="open" data-id="${esc(d.id)}">Open</button></div></li>`;
+      }).join("");
+      el.innerHTML = `<div class="answer"><div class="ans-head"><span class="ai-mark">${icon("sparkle")}Today's brief</span><button class="text-button" data-act="dismiss" aria-label="Dismiss">${icon("close")}</button></div><p class="lead">${esc(a.text)}</p><ol class="brief">${items}</ol></div>`;
+      return;
+    }
+    el.innerHTML = `<div class="answer"><div class="ans-head"><span class="ai-mark">${icon("sparkle")}${esc(a.q)}</span><button class="text-button" data-act="dismiss" aria-label="Dismiss">${icon("close")}</button></div><p class="lead">${esc(a.text)}</p><div class="chips">${chips}</div></div>`;
+  }
+  function renderKpis() {
+    const q = queue();
+    const k = kpis(S.docs, S.details, attention(S.docs, S.saved.th));
+    const won = signedLast30(S.docs, S.details);
+    const priced = (k.open ? `${k.pricedOpen} of ${k.open} priced` : "No open documents") + (k.skipped ? `, ${k.skipped} in another currency left out` : "");
+    const tile = (label, value, sub, tone = "", key = "") => {
+      const inner = `<span class="k-label">${label}</span><strong>${value}</strong><span class="k-sub">${sub}</span>`;
+      return key ? `<button class="kpi ${tone}" data-act="kpi" data-k="${key}">${inner}</button>` : `<div class="kpi ${tone}">${inner}</div>`;
+    };
+    $("kpis").innerHTML = tile("Needs you", String(q.total), q.total ? "Stuck, expiring or waiting" : "Nothing is stuck", q.total ? "warn" : "", "needs") + tile("Out for signature", String(k.out), "Sent or opened, not signed", "", "out") + tile("Open value", k.pricedOpen ? money(k.openValue, k.currency) : "\u2014", k.atRisk ? `${money(k.atRisk, k.currency)} at risk \xB7 ${priced}` : priced, "", "risk") + tile("Signed, last 30 days", String(won.n), won.value ? `${money(won.value, won.currency)} won` : won.n ? "Value not loaded" : "Nothing signed yet", "good", "won") + tile("Median days to sign", k.medianToSign === null ? "\u2014" : String(k.medianToSign), k.medianToSign === null ? "No signed documents yet" : "Sent to signed");
+  }
+  var TONE = { expiring: "bad", viewed: "warn", unopened: "warn", approval: "warn", declined: "bad", draft: "mute", error: "bad" };
+  function ageChip(d, a) {
+    const h = heat(d, S.saved.th);
+    if (a?.reason === "expiring") return `<span class="age hot">${a.days === 0 ? "today" : `${a.days}d left`}</span>`;
+    return `<span class="age ${h}">${d.lane === "signed" ? `${ageText(stageDays(d))} ago` : ageText(stageDays(d))}</span>`;
+  }
+  function focusRow(a, start2, quiet = false) {
+    const d = a.doc, [acct, title] = splitName(d.name);
+    const nudgedAt = S.saved.nudged[d.id];
+    const nudged = nudgedAt ? `<span class="tag">Nudged ${ageText(Math.floor((Date.now() - nudgedAt) / DAYMS))}${Date.now() - nudgedAt < DAYMS ? "" : " ago"}</span>` : "";
+    const nudge = !quiet && canNudge(d) ? `<button data-act="nudge-one" data-id="${esc(d.id)}">Nudge</button>` : "";
+    return `<div class="row t-${TONE[a.reason]} ${S.cursor === d.id ? "cur" : ""} ${S.selected.has(d.id) ? "sel" : ""} ${start2 ? "start" : ""} ${S.highlight.has(d.id) ? "hi" : ""}" data-id="${esc(d.id)}">
+    <input class="pick" type="checkbox" data-act="sel" data-id="${esc(d.id)}" ${S.selected.has(d.id) ? "checked" : ""} aria-label="Select ${esc(d.name)}">
+    <button class="row-main" data-act="open" data-id="${esc(d.id)}">
+      <span class="r-name"><strong>${esc(acct)}</strong>${title ? ` <span class="dim">${esc(title)}</span>` : ""}</span>
+      <span class="sub">${start2 ? `<span class="tag start">Start here</span> ` : ""}${esc(a.why)} ${progress(d)} ${nudged}</span>
+    </button>
+    <span class="val">${valueOf(d.id)}</span>
+    ${ageChip(d, a)}
+    <span class="actions">${nudge}<button class="text-button snz" data-act="snooze" data-id="${esc(d.id)}" title="Hide for 3 days (s)">${snoozed(d.id) ? "Unsnooze" : "Snooze"}</button></span>
+  </div>`;
+  }
+  function renderFocus() {
+    const q = queue();
+    const t = S.saved.th;
+    const skeleton = S.loading && !S.docs.length;
+    const groups = q.groups.map(({ g, items }) => {
+      const cap = S.groupOpen.has(g) ? items.length : 5;
+      const ids = items.map((a) => a.doc.id);
+      const nudgeIds = items.filter((a) => canNudge(a.doc)).map((a) => a.doc.id);
+      const val = sumValue(ids);
+      const act = g === "nudge" && nudgeIds.length ? `<button class="primary" data-act="grp-nudge">Nudge all ${nudgeIds.length}</button>` : g === "closeout" || g === "drafts" ? `<button data-act="grp-archive" data-g="${g}">Archive ${ids.length}</button>` : "";
+      const more = items.length > cap ? `<button class="text-button more" data-act="grp-more" data-g="${g}">Show ${items.length - cap} more</button>` : "";
+      return `<section class="grp" data-g="${g}">
+      <header class="grp-head"><h3>${GROUPS[g].title}</h3><span class="count">${items.length}</span>
+        <span class="sub">${val ? `${money(val, primaryCurrency(S.details))} \xB7 ` : ""}${GROUPS[g].hint}</span><span class="grow"></span>${act}</header>
+      <div class="needs-list">${items.slice(0, cap).map((a) => focusRow(a, a.doc.id === q.startId)).join("")}${more}</div>
+    </section>`;
+    }).join("");
+    const quiet = q.quiet.length ? `<section class="grp quiet"><button class="text-button" data-act="toggle-quiet">${S.quietOpen ? "Hide" : "Show"} ${q.quiet.length} nudged in the last day</button>${S.quietOpen ? `<div class="needs-list">${q.quiet.map((a) => focusRow(a, false, true)).join("")}</div>` : ""}</section>` : "";
+    const empty = skeleton ? `<div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div>` : `<div class="panel clear"><h3>You are clear</h3><p class="sub">Nothing is stuck, expiring or waiting. Open the Board to see what is going out.</p><button data-act="view" data-v="board">Open the Board</button></div>`;
+    $("focus").innerHTML = `
+    <div class="sec-head">
+      <h2>Needs you <span class="count">${q.total}</span></h2>
+      <div class="sec-tools">
+        <div class="seg sm" aria-label="Sort"><button data-act="sort" data-s="priority" aria-pressed="${S.sortBy === "priority"}">Priority</button><button data-act="sort" data-s="value" aria-pressed="${S.sortBy === "value"}">Value</button></div>
+        <details class="rules"><summary>Rules</summary>
+          <div class="rule-grid">
+            <label>Buyer stale after <input type="number" min="1" max="30" id="thStale" value="${t.stale}"> days</label>
+            <label>Draft untouched <input type="number" min="1" max="60" id="thDraft" value="${t.draft}"> days</label>
+            <label>Approval waits <input type="number" min="1" max="30" id="thApproval" value="${t.approval}"> days</label>
+          </div>
+        </details>
+      </div>
+    </div>
+    ${groups || empty}${quiet}
+    ${q.snoozedCount || S.showSnoozed ? `<label class="inline snz-toggle"><input type="checkbox" id="showSnoozed" ${S.showSnoozed ? "checked" : ""}> Show snoozed (${q.snoozedCount})</label>` : ""}`;
+  }
+  function renderLanes() {
+    const att = new Map(attention(S.docs, S.saved.th).map((a) => [a.doc.id, a]));
+    const slim = (l) => (l === "signed" || l === "lost") && !S.openLanes.has(l);
+    const shown = (d) => visible(d) && (!S.onlyNeeds || att.has(d.id)) && (!S.laneFilter || d.lane !== null && S.laneFilter.includes(d.lane));
+    const lanes = LANES.filter((l) => !S.laneFilter || S.laneFilter.includes(l.id));
+    const cur = primaryCurrency(S.details);
+    const cols = lanes.map((l) => {
+      const docs = S.docs.filter((d) => d.lane === l.id && shown(d));
+      const sorted = [...docs].sort((a, b) => l.id === "signed" || l.id === "lost" ? stageDays(a) - stageDays(b) : stageDays(b) - stageDays(a));
+      const total = docs.reduce((n, d) => {
+        const v = S.details.get(d.id);
+        return n + (v && v.currency === cur ? v.amount ?? 0 : 0);
+      }, 0);
+      const head = `<header><span class="dot ${l.id}"></span><h3>${l.title}</h3><span class="count">${docs.length}</span>${slim(l.id) ? "" : `<span class="lane-val">${total ? money(total, cur) : ""}</span>`}</header>`;
+      const fold = l.id === "signed" || l.id === "lost";
+      if (slim(l.id)) {
+        return `<section class="lane slim" data-lane="${l.id}" aria-label="${l.title}">${head}<p class="hint">${l.hint}</p>${total ? `<p class="slim-val">${money(total, cur)}</p>` : ""}<button class="text-button more" data-act="lane-toggle" data-lane="${l.id}">Show ${docs.length} cards</button></section>`;
+      }
+      const cap = S.expanded.has(l.id) ? sorted.length : 8;
+      const cards = sorted.slice(0, cap).map((d) => card(d, att.get(d.id))).join("");
+      const more = sorted.length > cap ? `<button class="text-button more" data-act="expand" data-lane="${l.id}">Show ${sorted.length - cap} more</button>` : "";
+      return `<section class="lane" data-lane="${l.id}" aria-label="${l.title}">${head}<p class="hint">${l.hint}${fold ? ` <button class="text-button mini" data-act="lane-toggle" data-lane="${l.id}">Collapse</button>` : ""}</p>
+      <div class="cards">${cards || `<p class="empty small">${S.loading ? "Loading\u2026" : "Empty"}</p>`}${more}</div></section>`;
+    });
+    const widths = lanes.map((l) => slim(l.id) ? "minmax(168px,.6fr)" : "minmax(224px,1fr)").join(" ");
+    const chips = `<button class="chip tog" data-act="only-needs" aria-pressed="${S.onlyNeeds}">Needs you only</button>` + (S.laneFilter ? `<button class="chip tog" aria-pressed="true" data-act="clear-lanes">${S.laneFilter.map((x) => LANES.find((l) => l.id === x).title).join(" + ")} ${icon("close")}</button>` : "");
+    $("lanes").innerHTML = `<div class="sec-head"><h2>Pipeline</h2><div class="sec-tools">${chips}<button data-act="older" class="text-button" ${live() ? "" : "hidden"}>Load older</button></div></div><div class="lane-scroll"><div class="lane-grid" style="grid-template-columns:${widths}">${cols.join("")}</div></div>`;
+  }
+  function card(d, a) {
+    const sel = S.selected.has(d.id), hi = S.highlight.has(d.id), sz = snoozed(d.id);
+    const [acct, title] = splitName(d.name);
+    const note = S.saved.notes[d.id] ? `<span class="tag" title="You added a note">Note</span>` : "";
+    const nudged = S.saved.nudged[d.id] ? `<span class="tag">Nudged</span>` : "";
+    return `<article class="card ${a ? `t-${TONE[a.reason]}` : ""} ${sel ? "sel" : ""} ${hi ? "hi" : ""} ${sz ? "snz" : ""} ${S.cursor === d.id ? "cur" : ""}" data-id="${esc(d.id)}" ${a ? `title="${esc(a.why)}"` : ""}>
+    <input class="pick" type="checkbox" data-act="sel" data-id="${esc(d.id)}" ${sel ? "checked" : ""} aria-label="Select ${esc(d.name)}">
+    <button class="card-main" data-act="open" data-id="${esc(d.id)}">
+      <span class="c-name">${esc(acct)}</span>
+      ${title ? `<span class="c-title">${esc(title)}</span>` : ""}
+      <span class="c-meta"><span class="val">${S.details.has(d.id) ? valueOf(d.id) : ""}</span>${ageChip(d, a)}</span>
+      <span class="c-tags">${progress(d)}${nudged}${note}${sz ? `<span class="tag">Snoozed</span>` : ""}</span>
+    </button>
+  </article>`;
+  }
+  function renderBulk() {
+    const el = $("bulk");
+    const n = S.selected.size;
+    document.body.classList.toggle("has-sel", n > 0);
+    el.hidden = n === 0;
+    if (!n) {
+      el.innerHTML = "";
+      return;
+    }
+    const ids = [...S.selected];
+    const eligible = ids.filter((id) => {
+      const d = byId(id);
+      return d && canNudge(d);
+    }).length;
+    el.innerHTML = `<div class="bulk-inner"><strong>${plural(n, "document")} selected</strong>
+    <span class="actions">
+      <button class="primary" data-act="nudge" ${eligible ? "" : "disabled"} title="${eligible ? "Nudge (n)" : "Only documents out for signature can be nudged"}">Nudge ${eligible || ""}</button>
+      <button data-act="status" data-status="Expired">Mark expired</button>
+      <button data-act="status" data-status="Declined">Mark declined</button>
+      <button data-act="archive" title="Archive (e)">Archive</button>
+      <button class="text-button" data-act="clear">Clear</button>
+    </span></div>`;
+  }
+  var toastTimer;
+  function toast(text, undo) {
+    S.toast = { text, undo };
+    renderToast();
+    clearTimeout(toastTimer);
+    toastTimer = window.setTimeout(() => {
+      S.toast = null;
+      renderToast();
+    }, 6e3);
+  }
+  function renderToast() {
+    const t = S.toast;
+    $("toast").innerHTML = t ? `<div class="toast" role="status"><span>${esc(t.text)}</span>${t.undo ? `<button class="text-button" data-act="undo">Undo</button>` : ""}</div>` : "";
+  }
+  var navIds = () => [...new Set([...document.querySelectorAll("#focus .row[data-id], #lanes .card[data-id]")].filter((el) => el.offsetParent !== null).map((el) => el.dataset.id))];
+  function applyCursor(scroll = true) {
+    document.querySelectorAll(".cur").forEach((e) => e.classList.remove("cur"));
+    if (!S.cursor) return;
+    const el = document.querySelector(`#focus .row[data-id="${CSS.escape(S.cursor)}"], #lanes .card[data-id="${CSS.escape(S.cursor)}"]`);
+    el?.classList.add("cur");
+    if (scroll) el?.scrollIntoView({ block: "nearest" });
+  }
+  function moveCursor(dir) {
+    const ids = navIds();
+    if (!ids.length) return;
+    const i = S.cursor ? ids.indexOf(S.cursor) : -1;
+    S.cursor = ids[Math.max(0, Math.min(ids.length - 1, i + dir))];
+    applyCursor();
+  }
+  function stepDoc(dir) {
+    if (S.sheet?.kind !== "doc") return;
+    const ids = navIds(), i = ids.indexOf(S.sheet.id), next = ids[i + dir];
+    if (!next) return;
+    S.cursor = next;
+    S.sheet = { kind: "doc", id: next };
+    renderSheet();
+    applyCursor(false);
+    ensureDetails(next).then(renderSheet);
+  }
+  var focusedFor = null;
+  function renderSheet() {
+    const el = $("sheet");
+    const sh = S.sheet;
+    if (!sh) {
+      el.innerHTML = "";
+      el.hidden = true;
+      return;
+    }
+    el.hidden = false;
+    let body = "";
+    if (sh.kind === "doc") body = docSheet(sh);
+    else if (sh.kind === "help") body = helpSheet();
+    else if (sh.kind === "nudge") body = nudgeSheet(sh);
+    else if (sh.kind === "status") body = statusSheet(sh);
+    else body = archiveSheet(sh);
+    el.innerHTML = `<div class="scrim" data-act="close"></div><div class="sheet" role="dialog" aria-modal="true" tabindex="-1">${body}</div>`;
+    if (focusedFor !== sh) {
+      focusedFor = sh;
+      el.querySelector("textarea, input:not([type=checkbox]), button.primary")?.focus({ preventScroll: true });
+    }
+  }
+  var sheetHead = (title, sub = "") => `<div class="sheet-head"><div><h2>${esc(title)}</h2>${sub ? `<p class="sub">${esc(sub)}</p>` : ""}</div><button class="text-button" data-act="close" aria-label="Close">${icon("close")}</button></div>`;
+  function resultList(rows) {
+    return `<ul class="results">${rows.map((r) => {
+      const d = byId(r.id);
+      const lines = r.error ? `<li class="bad">${esc(r.error)}</li>` : r.lines.map((l) => `<li class="${l.status === "sent" ? "ok" : l.status === "failed" ? "bad" : ""}">${esc(l.who)}${l.status === "sent" ? ` \xB7 ${l.detail ? esc(l.detail) : "sent"}` : l.detail ? ` \xB7 ${esc(l.detail)}` : ""}</li>`).join("");
+      return `<li class="res"><strong>${esc(d?.name ?? r.id)}</strong><ul>${lines}</ul></li>`;
+    }).join("")}</ul>${rows.some((r) => r.simulated) ? `<p class="sub">Sample data: nothing was sent or changed in PandaDoc. Switch to Live to act on your documents.</p>` : ""}`;
+  }
+  function nudgeSheet(sh) {
+    const docs = sh.ids.map(byId).filter((d) => !!d);
+    if (sh.phase === "done") return sheetHead("Reminders", "PandaDoc's answer for each person") + resultList(sh.rows) + `<div class="sheet-foot"><button class="primary" data-act="close">Done</button></div>`;
+    const people = docs.reduce((n, d) => n + (sh.draft[d.id]?.pick.length ?? 0), 0);
+    const blocks = docs.map((d) => {
+      const det = S.details.get(d.id);
+      const pend = pendingSigners(det);
+      const dr = sh.draft[d.id];
+      if (!canNudge(d)) return `<div class="block muted"><strong>${esc(d.name)}</strong><p class="sub">Skipped: only documents that are sent or viewed can be nudged.</p></div>`;
+      if (!det) return `<div class="block muted"><strong>${esc(d.name)}</strong><p class="sub">Loading recipients\u2026</p></div>`;
+      if (!pend.length) return `<div class="block muted"><strong>${esc(d.name)}</strong><p class="sub">Skipped: no signer is waiting to sign.</p></div>`;
+      const picks = pend.map((r) => `<label class="inline"><input type="checkbox" data-act="pick" data-id="${esc(d.id)}" data-r="${esc(r.id)}" ${dr?.pick.includes(r.id) ? "checked" : ""}> ${esc(r.name)} <span class="sub">${esc(r.email)}</span></label>`).join("");
+      return `<div class="block"><div class="b-head"><strong>${esc(d.name)}</strong><span class="sub">${ageText(stageDays(d))} since sent</span></div>
+      <div class="picks">${picks}</div>
+      <input type="text" data-act="subject" data-id="${esc(d.id)}" placeholder="Subject (empty uses your PandaDoc default)" value="${esc(dr?.subject ?? "")}" aria-label="Subject for ${esc(d.name)}">
+      <textarea data-act="message" data-id="${esc(d.id)}" rows="3" placeholder="Message (empty uses your PandaDoc default reminder)" aria-label="Message for ${esc(d.name)}">${esc(dr?.message ?? "")}</textarea></div>`;
+    }).join("");
+    const draftBtn = S.hasAI ? `<button data-act="draft" ${sh.drafting ? "disabled" : ""}>${icon("sparkle")}${sh.drafting ? "Drafting\u2026" : "Draft with Claude"}</button>` : "";
+    const busy = sh.phase === "sending";
+    return sheetHead(`Nudge ${plural(docs.length, "document")}`, live() ? "These emails go to real people when you press Send." : "Sample data: nothing is really sent.") + `<div class="sheet-body">${blocks}${sh.note ? `<p class="sub">${esc(sh.note)}</p>` : ""}</div>
+    <div class="sheet-foot">${draftBtn}<span class="grow"></span><button data-act="close">Cancel</button><button class="primary" data-act="send-nudge" ${people && !busy ? "" : "disabled"}>${busy ? "Sending\u2026" : people === 1 ? "Send to 1 person" : `Send to ${people} people`}</button></div>`;
+  }
+  function statusSheet(sh) {
+    if (sh.phase === "done") return sheetHead(`Marked ${sh.status.toLowerCase()}`) + resultList(sh.rows) + `<div class="sheet-foot"><button class="primary" data-act="close">Done</button></div>`;
+    const docs = sh.ids.map(byId).filter((d) => !!d);
+    return sheetHead(`Mark ${plural(docs.length, "document")} as ${sh.status.toLowerCase()}`, "This changes the status in PandaDoc. It cannot be switched back from here.") + `<div class="sheet-body"><ul class="plain">${docs.map((d) => `<li>${esc(d.name)} <span class="sub">${esc(d.label)}</span></li>`).join("")}</ul>
+    <textarea id="statusNote" rows="2" placeholder="Note for the audit trail (optional)">${esc(sh.note)}</textarea>
+    <label class="inline"><input type="checkbox" id="statusNotify" ${sh.notify ? "checked" : ""}> Tell the recipients</label></div>
+    <div class="sheet-foot"><span class="grow"></span><button data-act="close">Cancel</button><button class="primary" data-act="do-status" ${sh.phase === "sending" ? "disabled" : ""}>${sh.phase === "sending" ? "Working\u2026" : `Mark ${sh.status.toLowerCase()}`}</button></div>`;
+  }
+  function archiveSheet(sh) {
+    if (sh.phase === "done") return sheetHead("Archived") + resultList(sh.rows) + `<div class="sheet-foot"><button class="primary" data-act="close">Done</button></div>`;
+    const docs = sh.ids.map(byId).filter((d) => !!d);
+    return sheetHead(`Archive ${plural(docs.length, "document")}`, "Archived documents leave the board and can be restored in PandaDoc.") + `<div class="sheet-body"><ul class="plain">${docs.map((d) => `<li>${esc(d.name)} <span class="sub">${esc(d.label)}</span></li>`).join("")}</ul></div>
+    <div class="sheet-foot"><span class="grow"></span><button data-act="close">Cancel</button><button class="primary" data-act="do-archive" ${sh.phase === "sending" ? "disabled" : ""}>${sh.phase === "sending" ? "Working\u2026" : "Archive"}</button></div>`;
+  }
+  function docSheet(sh) {
+    const d = byId(sh.id);
+    if (!d) return sheetHead("Document not found");
+    const det = S.details.get(d.id);
+    const rec = (det?.recipients ?? []).map((r) => `<li><span>${esc(r.name)} <span class="sub">${esc(r.email)}</span></span><span class="pill ${r.completed ? "ok" : "mute"}">${r.completed ? "Signed" : r.type}</span></li>`).join("");
+    const link = d.url ? `<a class="pd-button-link" href="${esc(d.url)}" target="_blank" rel="noopener">Open in PandaDoc ${icon("open")}</a>` : "";
+    const snz = snoozed(d.id);
+    const a = attention([d], S.saved.th)[0];
+    const waiting = pendingSigners(det).length;
+    const nba = a ? `<div class="block nba t-${TONE[a.reason]}"><div class="b-head"><span class="pill ${TONE[a.reason]}">${REASON[a.reason].label}</span><span class="sub">Next best action</span></div>
+      <p><strong>${esc(a.why)}</strong></p>
+      ${canNudge(d) ? `<div><button class="primary" data-act="nudge-one" data-id="${esc(d.id)}">${waiting ? `Nudge ${plural(waiting, "signer")}` : "Nudge"}</button></div>` : a.next === "review" ? `<p class="sub">Ask the approver to act in PandaDoc, then check back here.</p>` : ""}</div>` : "";
+    const title = [d.label, `${ageText(stageDays(d))} in this stage`, det && det.amount !== null ? money(det.amount, det.currency) : ""].filter(Boolean).join(" \xB7 ");
+    return `<div class="sheet-head"><div><h2>${esc(d.name)}</h2><p class="sub">${esc(title)}</p></div>
+      <div class="actions"><button class="text-button" data-act="prev" aria-label="Previous document" title="Previous (k)">\u2039</button><button class="text-button" data-act="next" aria-label="Next document" title="Next (j)">\u203A</button><button class="text-button" data-act="close" aria-label="Close">${icon("close")}</button></div></div><div class="sheet-body">${nba}
+      <h3>People</h3>${rec ? `<ul class="people">${rec}</ul>` : `<p class="sub">${det ? "No recipients." : "Loading recipients\u2026"}</p>`}
+      <h3>Summary</h3>${sh.summary ? `<p>${esc(sh.summary)}</p>` : `<button data-act="summary" ${sh.busy === "summary" ? "disabled" : ""}>${sh.busy === "summary" ? "Loading\u2026" : "Load summary"}</button>`}
+      <h3>Activity</h3>${sh.activity ? `<p class="pre">${esc(sh.activity)}</p>` : `<button data-act="activity" ${sh.busy === "activity" ? "disabled" : ""}>${sh.busy === "activity" ? "Loading\u2026" : "Load activity"}</button>`}
+      <h3>Your note</h3><textarea id="docNote" rows="2" placeholder="Only you see this note">${esc(S.saved.notes[d.id] ?? "")}</textarea>
+    </div>
+    <div class="sheet-foot">${link}<span class="grow"></span>${!a && canNudge(d) ? `<button data-act="nudge-one" data-id="${esc(d.id)}">Nudge</button>` : ""}<button data-act="snooze" data-id="${esc(d.id)}">${snz ? "Unsnooze" : "Snooze 3 days"}</button><button class="primary" data-act="close">Done</button></div>`;
+  }
+  var SHORTCUTS = [
+    ["j / k", "Next / previous document (also inside a document)"],
+    ["x", "Select the highlighted document"],
+    ["Enter", "Open the highlighted document"],
+    ["n", "Nudge the selection, or the highlighted document"],
+    ["s", "Snooze for 3 days (Undo in the toast)"],
+    ["e", "Archive the selection or highlighted document"],
+    ["v", "Switch Focus and Board"],
+    ["/", "Filter by name"],
+    ["Cmd/Ctrl K", "Ask Claude"],
+    ["Esc", "Close, or clear the selection"],
+    ["?", "This list"]
+  ];
+  function helpSheet() {
+    return sheetHead("Keyboard shortcuts", "Nothing is sent or changed until you press the confirm button in a sheet.") + `<div class="sheet-body"><ul class="people">${SHORTCUTS.map(([k, v]) => `<li><span>${esc(v)}</span><kbd>${esc(k)}</kbd></li>`).join("")}</ul></div><div class="sheet-foot"><span class="grow"></span><button class="primary" data-act="close">Done</button></div>`;
+  }
+  function openNudge(ids) {
+    const draft = {};
+    S.sheet = { kind: "nudge", ids, draft, phase: "edit", rows: [], drafting: false };
+    renderSheet();
+    Promise.all(ids.map(ensureDetails)).then(() => {
+      if (S.sheet?.kind !== "nudge") return;
+      for (const id of ids) draft[id] = { subject: "", message: "", pick: pendingSigners(S.details.get(id)).map((r) => r.id) };
+      renderSheet();
+    });
+  }
+  async function sendNudges(sh) {
+    sh.phase = "sending";
+    renderSheet();
+    const rows = [];
+    let sent = 0;
+    for (const id of sh.ids) {
+      const dr = sh.draft[id], det = S.details.get(id);
+      if (!dr || !dr.pick.length || !det) continue;
+      const to = det.recipients.filter((r) => dr.pick.includes(r.id)).map((r) => ({ id: r.id, email: r.email }));
+      try {
+        const res = await S.api.remind(id, to, dr.subject, dr.message);
+        rows.push({ id, lines: res.lines, simulated: res.simulated });
+        const ok = res.lines.filter((l) => l.status === "sent").length;
+        if (ok) {
+          sent += ok;
+          S.saved.nudged[id] = Date.now();
+        }
+      } catch (e) {
+        const f = asFailure(e);
+        rows.push({ id, lines: [], error: f.code === "tool_error" ? `PandaDoc refused: ${f.message}` : `Not confirmed (${f.code}). Check the document before sending again.` });
+      }
+    }
+    sh.rows = rows;
+    sh.phase = "done";
+    if (sent) logAction(`Nudged ${plural(sent, "person")} on ${plural(rows.filter((r) => r.lines.some((l) => l.status === "sent")).length, "document")}`);
+    S.selected.clear();
+    renderAll();
+    S.api.refresh();
+  }
+  async function draftWithClaude(sh) {
+    if (!S.sample) return;
+    const items = sh.ids.map((id) => {
+      const d = byId(id), det = S.details.get(id);
+      return { id, name: d.name, status: d.label, days_since_sent: stageDays(d), signers: pendingSigners(det).map((r) => r.name), note: S.saved.notes[id] ?? "" };
+    }).filter((i) => i.signers.length);
+    if (!items.length) return;
+    sh.drafting = true;
+    renderSheet();
+    try {
+      const out = await S.sample.json(
+        `You write short reminder emails for documents waiting to be signed. For each item write a subject and a message of at most 60 words. Address the first signer by first name, mention the document name, say how long it has been, and offer help. Friendly, no pressure, no invented facts, no exclamation marks. Items:
+${JSON.stringify(items)}
+Reply with only a JSON array: [{"id": string, "subject": string, "message": string}]`,
+        { modelTier: "quick" }
+      );
+      for (const o of out) if (sh.draft[o.id]) {
+        sh.draft[o.id].subject = String(o.subject ?? "");
+        sh.draft[o.id].message = String(o.message ?? "");
+      }
+      sh.note = "Claude wrote these drafts. Read and edit them before sending.";
+    } catch (e) {
+      sh.note = aiCopy(String(e?.code));
+    }
+    sh.drafting = false;
+    renderSheet();
+  }
+  async function runEach(sh, fn, label) {
+    sh.phase = "sending";
+    renderSheet();
+    const rows = [];
+    for (const id of sh.ids) {
+      try {
+        const r = await fn(id);
+        rows.push({ id, lines: r.lines, simulated: r.simulated });
+      } catch (e) {
+        const f = asFailure(e);
+        rows.push({ id, lines: [], error: f.code === "tool_error" ? `PandaDoc refused: ${f.message}` : `Not confirmed (${f.code}). Check the document in PandaDoc.` });
+      }
+    }
+    sh.rows = rows;
+    sh.phase = "done";
+    const okCount = rows.filter((r) => !r.error).length;
+    if (okCount) logAction(`${label} ${plural(okCount, "document")}`);
+    S.selected.clear();
+    renderAll();
+    S.api.refresh();
+  }
+  async function ask(q) {
+    if (!S.sample || !q.trim()) return;
+    S.ctl?.abort();
+    const ctl = S.ctl = new AbortController();
+    S.answer = { state: "thinking", kind: "ask", q };
+    S.highlight.clear();
+    renderAnswer();
+    renderViews();
+    const board = S.docs.slice(0, 80).map((d) => `${d.id} | ${d.name} | ${d.label} | ${stageDays(d)}d in stage | ${valueOf(d.id)}${boardExtras(d)}`).join("\n");
+    const tools = S.hasTools ? [{
+      name: "get_document",
+      description: "Returns the total value and recipients (name, email, type, signed or not) of one document on the board. Use it to find out who has not signed.",
+      inputSchema: { type: "object", properties: { id: { type: "string" } }, required: ["id"] },
+      execute: async (i) => {
+        const d = await ensureDetails(String(i.id));
+        if (!d) throw new Error("No details for that document");
+        return { value: d.amount, currency: d.currency, recipients: d.recipients.map((r) => ({ name: r.name, email: r.email, type: r.type, signed: r.completed })) };
+      }
+    }] : void 0;
+    try {
+      const out = await S.sample.json(
+        `Today is ${(/* @__PURE__ */ new Date()).toDateString()}. You answer questions about a PandaDoc sales pipeline. Documents (id | name | status | days in stage | value, "\u2014" means not loaded):
+${board}
+
+Question: ${q}
+
+Answer in 2 to 5 plain sentences using only this data${tools ? " and get_document when you need recipients" : ""}. Name the specific documents. If the data cannot answer, say so. Reply with only JSON: {"answer": string, "ids": string[]} where ids are the documents your answer refers to (at most 12).`,
+        { signal: ctl.signal, modelTier: "quick", tools }
+      );
+      const ids = (out.ids ?? []).filter((id) => byId(id)).slice(0, 12);
+      S.answer = { state: "ok", kind: "ask", q, text: String(out.answer ?? ""), ids };
+      S.highlight = new Set(ids);
+    } catch (e) {
+      S.answer = e?.code === "cancelled" ? null : { state: "error", kind: "ask", text: aiCopy(String(e?.code)) };
+    }
+    renderAll();
+  }
+  async function brief() {
+    if (!S.sample) return;
+    S.ctl?.abort();
+    const ctl = S.ctl = new AbortController();
+    S.answer = { state: "thinking", kind: "brief" };
+    renderAnswer();
+    const att = attentionList().slice(0, 15).map((a) => `${a.doc.id} | ${a.doc.name} | ${a.why} | ${valueOf(a.doc.id)}${boardExtras(a.doc)}`).join("\n");
+    try {
+      const out = await S.sample.json(
+        `Today is ${(/* @__PURE__ */ new Date()).toDateString()}. These PandaDoc documents need the seller's attention (id | name | why | value):
+${att || "(none)"}
+
+Pick at most 3 for today, favouring the largest value and the nearest deadline. Reply with only JSON: {"headline": string (one sentence), "items": [{"id": string, "why": string (one short sentence with the number that matters), "do": string (one imperative sentence)}]}`,
+        { signal: ctl.signal, modelTier: "default" }
+      );
+      S.answer = { state: "ok", kind: "brief", text: String(out.headline ?? ""), items: (out.items ?? []).filter((i) => byId(i.id)).slice(0, 3) };
+    } catch (e) {
+      S.answer = e?.code === "cancelled" ? null : { state: "error", kind: "brief", text: aiCopy(String(e?.code)) };
+    }
+    renderAnswer();
+  }
+  var readable = (p) => {
+    if (typeof p === "string") return p;
+    const o = p;
+    if (typeof o?.summary === "string") return o.summary;
+    if (Array.isArray(p) || Array.isArray(o?.results)) {
+      const rows = Array.isArray(p) ? p : o.results;
+      const when = (v) => {
+        const t = Date.parse(String(v ?? ""));
+        return Number.isNaN(t) ? v : new Date(t).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+      };
+      return rows.slice(0, 20).map((r) => [when(r.date ?? r.timestamp ?? r.created_at), r.action ?? r.event ?? r.type ?? r.message, r.user ?? r.email ?? r.actor].filter(Boolean).join(" \xB7 ")).join("\n") || JSON.stringify(p).slice(0, 800);
+    }
+    return JSON.stringify(p).slice(0, 800);
+  };
+  document.addEventListener("click", async (ev) => {
+    const t = ev.target.closest("[data-act]");
+    if (!t) return;
+    const act = t.dataset.act, id = t.dataset.id ?? "";
+    if (act === "sel") {
+      t.checked ? S.selected.add(id) : S.selected.delete(id);
+      renderBulk();
+      renderViews();
+      return;
+    }
+    switch (act) {
+      case "open":
+        S.sheet = { kind: "doc", id };
+        renderSheet();
+        ensureDetails(id).then(renderSheet);
+        break;
+      case "close":
+        S.sheet = null;
+        renderSheet();
+        break;
+      case "clear":
+        S.selected.clear();
+        renderAll();
+        break;
+      case "nudge":
+        openNudge([...S.selected].filter((i) => {
+          const d = byId(i);
+          return d && canNudge(d);
+        }));
+        break;
+      case "nudge-one":
+        openNudge([id]);
+        break;
+      case "status":
+        S.sheet = { kind: "status", ids: [...S.selected], status: t.dataset.status, note: "", notify: false, phase: "edit", rows: [] };
+        renderSheet();
+        break;
+      case "archive":
+        S.sheet = { kind: "archive", ids: [...S.selected], phase: "edit", rows: [] };
+        renderSheet();
+        break;
+      case "send-nudge":
+        if (S.sheet?.kind === "nudge") sendNudges(S.sheet);
+        break;
+      case "draft":
+        if (S.sheet?.kind === "nudge") draftWithClaude(S.sheet);
+        break;
+      case "do-status":
+        if (S.sheet?.kind === "status") {
+          const sh = S.sheet;
+          runEach(sh, (i) => S.api.setStatus(i, sh.status, sh.note, sh.notify), `Marked ${sh.status.toLowerCase()}`);
+        }
+        break;
+      case "do-archive":
+        if (S.sheet?.kind === "archive") runEach(S.sheet, (i) => S.api.archive(i), "Archived");
+        break;
+      case "snooze":
+        snoozeDoc(id);
+        break;
+      case "undo":
+        S.toast?.undo?.();
+        S.toast = null;
+        renderToast();
+        break;
+      case "view":
+        S.view = t.dataset.v === "board" ? "board" : "focus";
+        renderTop();
+        break;
+      case "sort":
+        S.sortBy = t.dataset.s === "value" ? "value" : "priority";
+        renderFocus();
+        break;
+      case "kpi": {
+        const k = t.dataset.k;
+        S.onlyNeeds = false;
+        S.laneFilter = null;
+        if (k === "needs") S.view = "focus";
+        else if (k === "risk") {
+          S.view = "focus";
+          S.sortBy = "value";
+        } else if (k === "out") {
+          S.view = "board";
+          S.laneFilter = ["sent", "viewed"];
+        } else if (k === "won") {
+          S.view = "board";
+          S.laneFilter = ["signed"];
+          S.openLanes.add("signed");
+        }
+        renderAll();
+        window.scrollTo({ top: 0 });
+        break;
+      }
+      case "only-needs":
+        S.onlyNeeds = !S.onlyNeeds;
+        renderLanes();
+        break;
+      case "clear-lanes":
+        S.laneFilter = null;
+        renderLanes();
+        break;
+      case "lane-toggle": {
+        const l = t.dataset.lane;
+        S.openLanes.has(l) ? S.openLanes.delete(l) : S.openLanes.add(l);
+        renderLanes();
+        break;
+      }
+      case "grp-more":
+        S.groupOpen.add(t.dataset.g);
+        renderFocus();
+        break;
+      case "toggle-quiet":
+        S.quietOpen = !S.quietOpen;
+        renderFocus();
+        break;
+      case "grp-nudge": {
+        const g = queue().groups.find((x) => x.g === "nudge");
+        const ids = (g?.items ?? []).filter((a) => canNudge(a.doc)).map((a) => a.doc.id);
+        if (ids.length) openNudge(ids);
+        break;
+      }
+      case "grp-archive": {
+        const g = queue().groups.find((x) => x.g === t.dataset.g);
+        if (g) S.sheet = { kind: "archive", ids: g.items.map((a) => a.doc.id), phase: "edit", rows: [] };
+        renderSheet();
+        break;
+      }
+      case "prev":
+        stepDoc(-1);
+        break;
+      case "next":
+        stepDoc(1);
+        break;
+      case "help":
+        S.sheet = { kind: "help" };
+        renderSheet();
+        break;
+      case "ask-open":
+        openAsk();
+        break;
+      case "summary":
+      case "activity": {
+        const sh = S.sheet;
+        if (sh?.kind !== "doc") break;
+        sh.busy = act;
+        renderSheet();
+        try {
+          const p = await (act === "summary" ? S.api.summary(sh.id) : S.api.activity(sh.id));
+          sh[act] = readable(p) || "Nothing to show yet.";
+        } catch (e) {
+          sh[act] = `Could not load (${asFailure(e).code}).`;
+        }
+        sh.busy = void 0;
+        renderSheet();
+        break;
+      }
+      case "expand":
+        S.expanded.add(t.dataset.lane);
+        renderLanes();
+        break;
+      case "older":
+        loadOlder();
+        break;
+      case "chip": {
+        const q = t.dataset.q ?? "";
+        document.getElementById("askIn").value = q;
+        ask(q);
+        break;
+      }
+      case "brief":
+        brief();
+        break;
+      case "stop":
+        S.ctl?.abort();
+        break;
+      case "dismiss":
+        S.answer = null;
+        S.highlight.clear();
+        renderAll();
+        break;
+      case "retry":
+        connect();
+        break;
+      case "allow": {
+        const p = typeof claude === "undefined" ? null : await claude.use("permissions").catch(() => null);
+        if (p && S.server) await p.request([`mcp:${S.server}`]).catch(() => {
+        });
+        connect();
+        break;
+      }
+      case "mode":
+        if (live()) useDemo();
+        else useLive();
+        break;
+      case "refresh":
+        refresh();
+        break;
+    }
+  });
+  document.addEventListener("input", (ev) => {
+    const t = ev.target;
+    const sh = S.sheet;
+    if (t.id === "search") {
+      S.q = t.value;
+      renderKpis();
+      renderViews();
+      return;
+    }
+    if (sh?.kind === "nudge" && t.dataset.id) {
+      const dr = sh.draft[t.dataset.id];
+      if (!dr) return;
+      if (t.dataset.act === "subject") dr.subject = t.value;
+      if (t.dataset.act === "message") dr.message = t.value;
+    }
+    if (sh?.kind === "status") {
+      if (t.id === "statusNote") sh.note = t.value;
+    }
+    if (sh?.kind === "doc" && t.id === "docNote") {
+      const v = t.value.trim();
+      if (v) S.saved.notes[sh.id] = v;
+      else delete S.saved.notes[sh.id];
+      save();
+    }
+  });
+  document.addEventListener("change", (ev) => {
+    const t = ev.target;
+    const sh = S.sheet;
+    if (t.dataset.act === "pick" && sh?.kind === "nudge") {
+      const dr = sh.draft[t.dataset.id];
+      dr.pick = t.checked ? [.../* @__PURE__ */ new Set([...dr.pick, t.dataset.r])] : dr.pick.filter((x) => x !== t.dataset.r);
+      renderSheet();
+      return;
+    }
+    if (t.id === "statusNotify" && sh?.kind === "status") sh.notify = t.checked;
+    if (t.id === "showSnoozed") {
+      S.showSnoozed = t.checked;
+      renderFocus();
+    }
+    if (t.id === "thStale" || t.id === "thDraft" || t.id === "thApproval") {
+      const n = Math.max(1, Math.min(60, Number(t.value) || 1));
+      const k = t.id === "thStale" ? "stale" : t.id === "thDraft" ? "draft" : "approval";
+      S.saved.th[k] = n;
+      save();
+      renderAll();
+      document.querySelector(".rules")?.setAttribute("open", "");
+    }
+  });
+  document.addEventListener("submit", (ev) => {
+    ev.preventDefault();
+    if (ev.target.id === "askForm") ask(document.getElementById("askIn").value);
+  });
+  function snoozeDoc(id) {
+    if (snoozed(id)) {
+      delete S.saved.snoozed[id];
+      save();
+      renderAll();
+      return;
+    }
+    S.saved.snoozed[id] = Date.now() + 3 * DAYMS;
+    save();
+    renderAll();
+    toast("Snoozed for 3 days", () => {
+      delete S.saved.snoozed[id];
+      save();
+      renderAll();
+    });
+  }
+  function openAsk() {
+    if (!S.hasAI) {
+      document.getElementById("search")?.focus();
+      return;
+    }
+    S.askOpen = true;
+    renderAsk();
+    document.getElementById("askIn")?.focus();
+  }
+  document.addEventListener("keydown", (ev) => {
+    const t = ev.target;
+    const typing = t.isContentEditable || t.tagName === "TEXTAREA" || t.tagName === "SELECT" || t.tagName === "INPUT" && !["checkbox", "radio", "button"].includes(t.type);
+    if ((ev.metaKey || ev.ctrlKey) && ev.key.toLowerCase() === "k") {
+      ev.preventDefault();
+      openAsk();
+      return;
+    }
+    if (ev.key === "Escape") {
+      if (S.sheet) {
+        S.sheet = null;
+        renderSheet();
+      } else if (typing) t.blur();
+      else if (S.selected.size) {
+        S.selected.clear();
+        renderBulk();
+        renderViews();
+      }
+      return;
+    }
+    if (typing || ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    if (S.sheet) {
+      if (S.sheet.kind === "doc") {
+        if (ev.key === "j") stepDoc(1);
+        else if (ev.key === "k") stepDoc(-1);
+      }
+      return;
+    }
+    const targets = () => S.selected.size ? [...S.selected] : S.cursor ? [S.cursor] : [];
+    switch (ev.key) {
+      case "j":
+        moveCursor(1);
+        break;
+      case "k":
+        moveCursor(-1);
+        break;
+      case "x":
+        if (S.cursor) {
+          S.selected.has(S.cursor) ? S.selected.delete(S.cursor) : S.selected.add(S.cursor);
+          renderBulk();
+          renderViews();
+          applyCursor(false);
+        }
+        break;
+      case "Enter":
+        if (t === document.body && S.cursor) {
+          S.sheet = { kind: "doc", id: S.cursor };
+          renderSheet();
+          ensureDetails(S.cursor).then(renderSheet);
+        }
+        break;
+      case "n": {
+        const ids = targets().filter((id) => {
+          const d = byId(id);
+          return d && canNudge(d);
+        });
+        if (ids.length) openNudge(ids);
+        else if (targets().length) toast("Only documents out for signature can be nudged");
+        break;
+      }
+      case "s":
+        if (S.cursor) snoozeDoc(S.cursor);
+        break;
+      case "e": {
+        const ids = targets();
+        if (ids.length) {
+          S.sheet = { kind: "archive", ids, phase: "edit", rows: [] };
+          renderSheet();
+        }
+        break;
+      }
+      case "v":
+        S.view = S.view === "focus" ? "board" : "focus";
+        renderTop();
+        break;
+      case "/":
+        ev.preventDefault();
+        document.getElementById("search")?.focus();
+        break;
+      case "?":
+        S.sheet = { kind: "help" };
+        renderSheet();
+        break;
+    }
+  });
+  async function connect() {
+    const c = await connectLive();
+    if (!c.ok) {
+      S.failure = c.failure;
+      S.live = null;
+      renderAll();
+      return;
+    }
+    S.live = c.api;
+    S.server = c.server;
+    S.failure = null;
+    useLive();
+  }
+  async function loadPrivate() {
+    if (typeof claude === "undefined") return;
+    try {
+      const [db, user] = await Promise.all([claude.use("db"), claude.use("user")]);
+      const id = await user?.id?.();
+      if (!db || !id) return;
+      const ref = db.collection(`data/users/${id}`).doc("board");
+      S.persist = ref;
+      const snap = await ref.get();
+      const d = snap.exists ? snap.data() : null;
+      if (d) {
+        S.liveSaved = { snoozed: d.snoozed ?? {}, notes: d.notes ?? {}, nudged: d.nudged ?? {}, log: d.log ?? [], th: { ...DEFAULTS, ...d.th ?? {} } };
+        if (live()) S.saved = S.liveSaved;
+        renderAll();
+      }
+    } catch {
+    }
+  }
+  async function loadAI() {
+    if (typeof claude === "undefined") return;
+    const s = await claude.use("sample").catch(() => null);
+    if (!s) return;
+    S.sample = s;
+    S.hasAI = true;
+    S.hasTools = !!(await s.limits?.().catch(() => null))?.tools;
+    renderAll();
+  }
+  function shell() {
+    $("app").innerHTML = `
+    <header class="top">
+      <div class="brand" id="brand"></div>
+      <div class="titles"><h1>Pipeline board</h1><p class="sub" id="fresh"></p></div>
+      <div class="seg" role="group" aria-label="View"><button data-act="view" data-v="focus" aria-pressed="true">Focus</button><button data-act="view" data-v="board" aria-pressed="false">Board</button></div>
+      <div class="top-tools">
+        <input id="search" type="search" placeholder="Filter  /" aria-label="Filter documents by name">
+        <button id="askBtn" data-act="ask-open" hidden>${icon("sparkle")}Ask Claude <kbd>\u2318K</kbd></button>
+        <button class="text-button" data-act="help" title="Keyboard shortcuts (?)" aria-label="Keyboard shortcuts">?</button>
+        <button class="text-button" data-act="refresh" id="refreshBtn" title="Refresh now">${icon("refresh")}<span class="vh">Refresh</span></button>
+        <button id="modeBtn" data-act="mode" class="mode"></button>
+      </div>
+    </header>
+    <div id="banner"></div>
+    <section id="ask" class="ask" hidden></section>
+    <div id="answer"></div>
+    <section id="kpis" class="kpis" aria-label="Summary"></section>
+    <section id="focus" aria-label="Needs you"></section>
+    <section id="lanes" aria-label="Pipeline" hidden></section>
+    <div id="bulk" class="bulk" hidden></div>
+    <div id="toast" class="toast-wrap"></div>
+    <div id="sheet" hidden></div>`;
+    $("brand").innerHTML = document.getElementById("brand-tpl")?.innerHTML ?? "";
+  }
+  shell();
+  useDemo();
+  setInterval(() => {
+    if (live()) renderTop();
+  }, 3e4);
+  connect();
+  loadPrivate();
+  loadAI();
+})();
+
+</script>
